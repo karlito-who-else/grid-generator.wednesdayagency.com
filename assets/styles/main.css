@@ -7787,7 +7787,6 @@ section > .contents [class^=col-] > span {
   color: #fff;
   display: block;
   font-size: 12px;
-  min-height: 4em;
 }
 @media (max-width: 480px) {
   section > .contents [class^=col-] > span {
@@ -7866,7 +7865,7 @@ section > footer {
 .show-grid section > .demonstration > .container-fluid {
   visibility: visible;
 }
-@media (min-width: 1440px) and (max-width: 1439px) {
+@media (min-width: 1440px) and (max-width: 1919px) {
   .visible-xs.visible-xl {
     display: block !important;
   }
@@ -7896,7 +7895,7 @@ section > footer {
     display: table-cell !important;
   }
 }
-@media (min-width: 1440px) and (max-width: 1439px) {
+@media (min-width: 1440px) and (max-width: 1919px) {
   .visible-sm.visible-xl {
     display: block !important;
   }
@@ -7926,7 +7925,7 @@ section > footer {
     display: table-cell !important;
   }
 }
-@media (min-width: 1440px) and (max-width: 1439px) {
+@media (min-width: 1440px) and (max-width: 1919px) {
   .visible-md.visible-xl {
     display: block !important;
   }
@@ -7956,7 +7955,7 @@ section > footer {
     display: table-cell !important;
   }
 }
-@media (min-width: 1440px) and (max-width: 1439px) {
+@media (min-width: 1440px) and (max-width: 1919px) {
   .visible-lg.visible-xl {
     display: block !important;
   }
@@ -8037,7 +8036,7 @@ td.visible-xl {
     display: table-cell !important;
   }
 }
-@media (min-width: 1200px) and (max-width: 1199px) {
+@media (min-width: 1200px) and (max-width: 1439px) {
   .visible-xl.visible-lg {
     display: block !important;
   }
@@ -8052,7 +8051,7 @@ td.visible-xl {
     display: table-cell !important;
   }
 }
-@media (min-width: 1440px) and (max-width: 1439px) {
+@media (min-width: 1440px) and (max-width: 1919px) {
   .visible-xl {
     display: block !important;
   }
@@ -8133,7 +8132,7 @@ td.visible-xxl {
     display: table-cell !important;
   }
 }
-@media (min-width: 1200px) and (max-width: 1199px) {
+@media (min-width: 1200px) and (max-width: 1439px) {
   .visible-xxl.visible-lg {
     display: block !important;
   }
@@ -8148,7 +8147,7 @@ td.visible-xxl {
     display: table-cell !important;
   }
 }
-@media (min-width: 1440px) and (max-width: 1439px) {
+@media (min-width: 1440px) and (max-width: 1919px) {
   .visible-xxl.visible-xl {
     display: block !important;
   }
