@@ -59,29 +59,30 @@
 
         <!-- Drawer Content -->
         <paper-menu class="list" attr-for-selected="data-route" selected="{{route}}" on-iron-select="onMenuSelect">
-          <a data-route="home" href="/">
-            <iron-icon icon="home"></iron-icon>
-            <span>Home</span>
-          </a>
 
-          <a data-route="users" href="/users">
+          <a data-route="overview" href="/">
             <iron-icon icon="info"></iron-icon>
-            <span>Users</span>
+            <span>Overview</span>
           </a>
 
-          <a data-route="map" href="/map">
-            <iron-icon icon="maps:directions"></iron-icon>
-            <span>Map</span>
+          <a data-route="fixed" href="/fixed">
+            <iron-icon icon="reorder"></iron-icon>
+            <span>Fixed</span>
           </a>
 
-          <a data-route="contact" href="/contact">
-            <iron-icon icon="mail"></iron-icon>
-            <span>Contact</span>
+          <a data-route="fluid" href="/fluid">
+            <iron-icon icon="reorder"></iron-icon>
+            <span>Fluid</span>
           </a>
 
-          <a href="javascript:(function(){$('body').toggleClass('show-grid')})();" title="Drag this browser bookmarklet into your browser's toolbar">
-            <iron-icon icon="view-column"></iron-icon>
-            <span>Toggle Grid</span>
+          <a data-route="adaptive" href="/adaptive">
+            <iron-icon icon="reorder"></iron-icon>
+            <span>Adaptive</span>
+          </a>
+
+          <a data-route="responsive" href="/responsive">
+            <iron-icon icon="reorder"></iron-icon>
+            <span>Responsive</span>
           </a>
 
         </paper-menu>
@@ -100,7 +101,7 @@
           <paper-icon-button icon="av:pause" on-tap="toggleSplitCellsVisibility"></paper-icon-button>
 
           <!-- Application name -->
-          <div class="middle paper-font-display2 app-name">Example Grid</div>
+          <div class="middle paper-font-display2 app-name">Grids</div>
 
           <!-- Application sub title -->
           <div class="bottom title"></div>
@@ -111,49 +112,56 @@
         <div class="content">
           <iron-pages attr-for-selected="data-route" selected="{{route}}">
 
-            <section data-route="home">
+            <section data-route="overview">
+
+              <paper-material elevation="1">
+                <h2 class="paper-font-display2">Overview</h2>
+
+                <p>https://teamtreehouse.com/library/build-a-responsive-website/introduction-to-responsive-web-design/fixed-fluid-adaptive-and-responsive-2</p>
+
+                <h3 class="paper-font-display3">Terminology</h3>
+                <ul>
+                  <li>
+                    <p><a href="/fixed"><strong>Fixed</strong></a> websites have a set width and resizing the browser or viewing it on different devices won’t affect on the way the website looks. </p>
+                  </li>
+                  <li>
+                    <p><a href="/fluid"><strong>Fluid</strong></a> websites are built using percentages for widths. As a result, columns are relative to one another and the browser allowing it to scale up and down fluidly. </p>
+                  </li>
+                  <li>
+                    <p><a href="/adaptive"><strong>Adaptive</strong></a> websites introduce media queries to target specific device sizes, like smaller monitors, tablets, and mobile.  </p>
+                  </li>
+                  <li>
+                    <p><a href="/responsive"><strong>Responsive</strong></a> websites are built on a fluid grid and use media queries to control the design and its content as it scales down or up with the browser or device. </p>
+                  </li>
+                </ul>
+              </paper-material>
 
               <wednesday-grid></wednesday-grid>
+
+            </section>
+
+            <section data-route="fixed">
+              <h2 class="paper-font-display2">Fixed</h2>
+              <p>Lorem ipsum</p>
               <wednesday-grid></wednesday-grid>
+            </section>
+
+            <section data-route="fluid">
+              <h2 class="paper-font-display2">Fluid</h2>
+              <p>Lorem ipsum</p>
               <wednesday-grid></wednesday-grid>
-
             </section>
 
-            <section data-route="users">
-              <paper-material elevation="1">
-                <h2 class="paper-font-display2">Users</h2>
-                <p>This is the users section</p>
-                <a href="/users/Rob">Rob</a>
-              </paper-material>
+            <section data-route="adaptive">
+              <h2 class="paper-font-display2">Adaptive</h2>
+              <p>Lorem ipsum</p>
+              <wednesday-grid></wednesday-grid>
             </section>
 
-            <section data-route="map">
-              <paper-material elevation="1">
-                <!--
-                <style>
-                  google-map {
-                    height: 600px;
-                  }
-                </style>
-                <google-map latitude="37.77493" longitude="-122.41942" zoom="15"></google-map>
-                 -->
-              </paper-material>
-            </section>
-
-            <section data-route="user-info">
-              <paper-material elevation="1">
-                <h2 class="paper-font-display2">
-                User:<span>{{params.name}}</span>
-                </h2>
-                <div>This is <span>{{params.name}}</span>'s section</div>
-              </paper-material>
-            </section>
-
-            <section data-route="contact">
-              <paper-material elevation="1">
-                <h2 class="paper-font-display2">Contact</h2>
-                <p>This is the contact section</p>
-              </paper-material>
+            <section data-route="responsive">
+              <h2 class="paper-font-display2">Responsive</h2>
+              <p>Lorem ipsum</p>
+              <wednesday-grid></wednesday-grid>
             </section>
 
           </iron-pages>

@@ -1,17 +1,20 @@
 <dom-module id="wednesday-grid">
+  <link rel="import" href="/bower_components/paper-toolbar/paper-toolbar.html">
   <link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
   <link rel="import" href="../wednesday-cell/wednesday-cell.html">
   <link rel="import" type="css" href="wednesday-grid.css">
   <template>
     <header class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <paper-icon-button icon="view-column" on-tap="toggleGridVisibility"></paper-icon-button>
-          <paper-icon-button icon="label" on-tap="toggleLabelVisibility"></paper-icon-button>
-          <paper-icon-button icon="warning" on-tap="toggleDangerVisibility"></paper-icon-button>
-          <paper-icon-button icon="av:pause" on-tap="toggleSplitCellsVisibility"></paper-icon-button>
+      <paper-toolbar>
+        <div class="row">
+          <div class="col-xs-12">
+            <paper-icon-button icon="view-column" on-tap="toggleGridVisibility"></paper-icon-button>
+            <paper-icon-button icon="label" on-tap="toggleLabelVisibility"></paper-icon-button>
+            <paper-icon-button icon="warning" on-tap="toggleDangerVisibility"></paper-icon-button>
+            <paper-icon-button icon="av:pause" on-tap="toggleSplitCellsVisibility"></paper-icon-button>
+          </div>
         </div>
-      </div>
+      </paper-toolbar>
     </header>
     <main>
       <section id="example">

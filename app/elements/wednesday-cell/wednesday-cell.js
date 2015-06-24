@@ -28,7 +28,7 @@
       this.items = [];
 
       for (var i = 0; i < classArray.length; i++) {
-        console.log('label', classArray[i]);
+        // console.log('label', classArray[i]);
         this.push('items', { name: classArray[i], display: 'none' });
       }
     },
@@ -40,7 +40,7 @@
     toggleDangerVisibility: function() {
       var classList = Polymer.dom(this).node.classList;
       var danger = classList.contains('danger');
-      console.log('toggleLabelVisibility cell danger', danger);
+      // console.log('toggleLabelVisibility cell danger', danger);
       if(!danger) {
         return;
       }
@@ -48,8 +48,8 @@
     },
 
     toggleLabelVisibility: function() {
-      // var labels = this.$.labels;
-      console.log('toggleLabelVisibility cell labels', this.items);
+      var labels = this.$.labels;
+      // console.log('toggleLabelVisibility cell labels', this.items);
       for (var i = 0; i < this.items.length; i++) {
         console.log('label', this.items[i]);
         this.set('items.' + i + '.item.display', 'spispopd');
