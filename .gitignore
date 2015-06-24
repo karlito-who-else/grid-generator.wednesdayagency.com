@@ -1,60 +1,16 @@
-########################
-# sails
-########################
-.sails
-.waterline
-.rigging
-.tmp
-
-
-########################
-# node.js / npm
-########################
-lib-cov
-*.seed
-*.log
-*.csv
 *.dat
+*.gz
+*.log
 *.out
 *.pid
-*.gz
-
-pids
-logs
-results
-
-node_modules
-
-npm-debug.log
-
-
-########################
-# misc / editors
-########################
-*~
-*#
 .DS_STORE
-.netbeans
-nbproject
-.idea
-
-
-########################
-# local config
-########################
-config/local.js
-
-
-########################
-# Bower
-########################
-bower_components
-
-
-########################
-# Sails additions
-########################
-build/config/*.js
-!build/config/adapters.js
-!build/config/custom.js
-!build/config/passport.js
+.sass-cache
+.tmp
+bower_components/*
+logs/*
+node_modules/*
+npm-debug.log
+pids/*
+scss-lint-report.xml
+uploads/*
+www/*

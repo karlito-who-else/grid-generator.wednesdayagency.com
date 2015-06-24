@@ -1,0 +1,35 @@
+:host {
+  display: block;
+}
+
+main {
+  position: relative;
+}
+
+section {
+
+}
+
+#example {
+  position: relative;
+  z-index: 2;
+}
+
+#grid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  right: 0;
+  top: 0;
+  z-index: 1;
+
+  div {
+    height: 100%;
+  }
+
+  .column {
+    background-color: rgba(0, 155, 155, 0.5);
+  }
+
+}

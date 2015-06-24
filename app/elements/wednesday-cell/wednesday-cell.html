@@ -1,0 +1,11 @@
+<dom-module id="wednesday-cell">
+  <link rel="import" type="css" href="wednesday-cell.css">
+  <template>
+    <ul>
+      <template is="dom-repeat" items="{{items}}" filter="isManuallyAssigned">
+        <li id="label">{{item}}</li>
+      </template>
+    </ul>
+  </template>
+  <script src="wednesday-cell.js"></script>
+</dom-module>
