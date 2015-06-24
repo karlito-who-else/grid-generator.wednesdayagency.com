@@ -1,9 +1,10 @@
 <dom-module id="wednesday-cell">
   <link rel="import" type="css" href="wednesday-cell.css">
   <template>
-    <ul>
-      <template is="dom-repeat" items="{{items}}" filter="isManuallyAssigned">
-        <li id="label">{{item}}</li>
+    <ul id="list">
+      <template is="dom-repeat" id="labels" items="{{items}}" filter="isManuallyAssigned" observe="display item.display">
+        <li id="label" style="display: block;">{{item.name}}</li>
+        <li id="label2">{{item.display}}</li>
       </template>
     </ul>
   </template>

@@ -96,6 +96,8 @@
           <!-- Toolbar icons -->
           <paper-icon-button icon="view-column" on-tap="toggleGridVisibility"></paper-icon-button>
           <paper-icon-button icon="label" on-tap="toggleLabelVisibility"></paper-icon-button>
+          <paper-icon-button icon="warning" on-tap="toggleDangerVisibility"></paper-icon-button>
+          <paper-icon-button icon="av:pause" on-tap="toggleSplitCellsVisibility"></paper-icon-button>
 
           <!-- Application name -->
           <div class="middle paper-font-display2 app-name">Example Grid</div>
@@ -111,6 +113,8 @@
 
             <section data-route="home">
 
+              <wednesday-grid></wednesday-grid>
+              <wednesday-grid></wednesday-grid>
               <wednesday-grid></wednesday-grid>
 
             </section>

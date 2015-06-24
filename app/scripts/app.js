@@ -52,11 +52,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
   };
 
+  app.toggleDangerVisibility = function() {
+    console.log('toggleDangerVisibility global');
+    var wednesdayGrid = document.querySelectorAll('wednesday-grid');
+    for (var i = 0; i < wednesdayGrid.length; i++) {
+      wednesdayGrid[i].toggleDangerVisibility();
+    }
+  };
+
   app.toggleLabelVisibility = function() {
     console.log('toggleLabelVisibility global');
-    var wednesdayCell = document.querySelectorAll('wednesday-cell');
-    for (var i = 0; i < wednesdayCell.length; i++) {
-      wednesdayCell[i].toggleLabelVisibility();
+    var wednesdayGrid = document.querySelectorAll('wednesday-grid');
+    for (var i = 0; i < wednesdayGrid.length; i++) {
+      wednesdayGrid[i].toggleLabelVisibility();
     }
   };
 

@@ -21,17 +21,28 @@
       // });
 
       this.items = Array.prototype.slice.call(classList);
+
+      var grid = this.$.grid;
+      grid.style.display = 'none';
     },
 
     toggleGridVisibility: function() {
-      console.log('toggleGridVisibility grid');
-      var grid = document.getElementById('grid');
+      // console.log('toggleGridVisibility grid');
+      var grid = this.$.grid;
       grid.style.display = (grid.style.display !== 'none' ? 'none' : '');
     },
 
+    toggleDangerVisibility: function() {
+      // console.log('toggleDangerVisibility grid');
+      var wednesdayCell = Polymer.dom(this.root).querySelectorAll('wednesday-cell');
+      for (var i = 0; i < wednesdayCell.length; i++) {
+        wednesdayCell[i].toggleDangerVisibility();
+      }
+    },
+
     toggleLabelVisibility: function() {
-      console.log('toggleLabelVisibility grid');
-      var wednesdayCell = document.querySelectorAll('wednesday-cell');
+      // console.log('toggleLabelVisibility grid');
+      var wednesdayCell = Polymer.dom(this.root).querySelectorAll('wednesday-cell');
       for (var i = 0; i < wednesdayCell.length; i++) {
         wednesdayCell[i].toggleLabelVisibility();
       }
