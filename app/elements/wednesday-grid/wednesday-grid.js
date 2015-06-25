@@ -29,7 +29,7 @@
       var grid = this.$.grid;
       grid.style.display = 'none';
 
-      console.log('this.technique', this.technique);
+      console.log('this.layout', this.layout);
 
       var containers = Polymer.dom(this.root).querySelectorAll('.container');
 
