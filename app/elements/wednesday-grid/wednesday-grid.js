@@ -8,9 +8,13 @@
       //   type: String,
       //   value: ''
       // }
-      method: {
+      container: {
         type: String,
         value: ''
+      },
+      grid: {
+        type: Number,
+        value: null
       }
     },
     ready: function() {
@@ -29,18 +33,43 @@
       var grid = this.$.grid;
       grid.style.display = 'none';
 
-      console.log('this.layout', this.layout);
+      console.log('this.container', this.container);
 
       var containers = Polymer.dom(this.root).querySelectorAll('.container');
 
-      if (this.method === 'fluid') {
-        for (var i = 0; i < containers.length; i++) {
-          // containers[i].toggleDangerVisibility();
-          containers.classList.toggle('container');
-          containers.classList.toggle('container-fluid');
+      for (var i = 0; i < containers.length; i++) {
+
+        containers[i].classList.add('container-' + this.container);
+
+        switch (this.container) {
+          case 'fluid':
+          case 'responsive':
+            containers[i].classList.remove('container');
+            containers[i].classList.add('container-fluid');
+          break;
         }
+
       }
 
+    },
+
+    toggleGridColumns: function() {
+      switch (this.grid) {
+        case null:
+          this.grid = 12;
+        break;
+        case 12:
+          this.grid = 24;
+        break;
+        case 24:
+          this.grid = null;
+        break;
+      }
+
+      console.log('this.grid', this.grid);
+
+      var containers = Polymer.dom(this.root).querySelectorAll('.container');
+      
     },
 
     toggleGridVisibility: function() {
