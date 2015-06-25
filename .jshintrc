@@ -21,6 +21,7 @@
 		"$": true,
 		"document": true,
 		"imagesLoaded": true,
+		"importScripts": true,
 		"jQuery": true,
 		"navigator": true,
 		"Polymer": true,
