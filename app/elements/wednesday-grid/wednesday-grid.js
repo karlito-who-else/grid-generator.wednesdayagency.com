@@ -3,12 +3,16 @@
 (function() {
   Polymer({
     is: 'wednesday-grid',
-    // properties: {
-    //   class: {
-    //     type: String,
-    //     value: ''
-    //   }
-    // },
+    properties: {
+      // class: {
+      //   type: String,
+      //   value: ''
+      // }
+      method: {
+        type: String,
+        value: ''
+      }
+    },
     ready: function() {
       var classList = Polymer.dom(this).node.classList;
 
@@ -24,6 +28,19 @@
 
       var grid = this.$.grid;
       grid.style.display = 'none';
+
+      console.log('this.technique', this.technique);
+
+      var containers = Polymer.dom(this.root).querySelectorAll('.container');
+
+      if (this.method === 'fluid') {
+        for (var i = 0; i < containers.length; i++) {
+          // containers[i].toggleDangerVisibility();
+          containers.classList.toggle('container');
+          containers.classList.toggle('container-fluid');
+        }
+      }
+
     },
 
     toggleGridVisibility: function() {

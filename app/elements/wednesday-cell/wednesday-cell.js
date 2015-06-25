@@ -51,7 +51,7 @@
       var labels = this.$.labels;
       // console.log('toggleLabelVisibility cell labels', this.items);
       for (var i = 0; i < this.items.length; i++) {
-        console.log('label', this.items[i]);
+        // console.log('label', this.items[i]);
         this.set('items.' + i + '.item.display', 'spispopd');
         // this.items[i].style.display = (this.items[i].style.display !== 'none' ? 'none' : '');
       }
