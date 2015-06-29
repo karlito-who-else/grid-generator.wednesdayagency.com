@@ -30,8 +30,28 @@ section {
     height: 100%;
   }
 
-  .column {
-    background-color: rgba(0, 155, 155, 0.25);
+  [class^="column-"] {
+
+    &.visible {
+      background-color: rgba(0, 155, 155, 0.25);
+    }
+
   }
+
+}
+
+.container-fixed {
+  min-width: 1155px !important;
+}
+
+.container-fluid {
+
+}
+
+.container-adaptive {
+
+}
+
+.container-responsive {
 
 }

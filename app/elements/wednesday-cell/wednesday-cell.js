@@ -41,14 +41,14 @@
       var classList = Polymer.dom(this).node.classList;
       var danger = classList.contains('danger');
       // console.log('toggleLabelVisibility cell danger', danger);
-      if(!danger) {
+      if (!danger) {
         return;
       }
       classList.toggle('warn-danger');
     },
 
     toggleLabelVisibility: function() {
-      var labels = this.$.labels;
+      // var labels = this.$.labels;
       // console.log('toggleLabelVisibility cell labels', this.items);
       for (var i = 0; i < this.items.length; i++) {
         // console.log('label', this.items[i]);
