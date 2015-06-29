@@ -2,12 +2,12 @@
 
 import gulp from 'gulp';
 
-import config from './_config.babel.js';
+import {config, browserSync} from './_config.babel.js';
 
 gulp.task('watch', [
   'browser-sync'
 ], () => {
-  gulp.watch(config.path.source.markup + config.files.markup, ['markup']);
-  gulp.watch(config.path.source.scripts + config.files.scripts, ['scripts']);
-  gulp.watch(config.path.source.styles + config.files.styles, ['styles']);
+  gulp.watch(config.path.source.base + config.files.markup, ['markup'], browserSync.reload);
+  gulp.watch(config.path.source.base + config.files.scripts, ['scripts'], browserSync.reload);
+  gulp.watch(config.path.source.base + config.files.styles, ['styles']);
 });
