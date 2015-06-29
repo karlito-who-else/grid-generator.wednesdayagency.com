@@ -19,7 +19,9 @@
 	"smarttabs": true,
 	"globals": {
 		"$": true,
+		"Blob": true,
 		"document": true,
+		"html2canvas": true,
 		"imagesLoaded": true,
 		"importScripts": true,
 		"jQuery": true,
