@@ -16,6 +16,7 @@
     "url": "https://github.com/wednesdayagency/grid/issues"
   },
   "dependencies": {
+    "html2canvas": "~0.4.1",
     "imagesloaded": "^3.1.8",
     "iron-elements": "PolymerElements/iron-elements#1.0.0",
     "jquery": "2.1.4",
@@ -23,8 +24,7 @@
     "platinum-elements": "PolymerElements/platinum-elements#1.0.1",
     "neon-elements": "PolymerElements/neon-elements#1.0.0",
     "page": "visionmedia/page.js#~1.6.3",
-    "polymer": "Polymer/polymer#^1.0.0",
-    "html2canvas": "~0.4.1"
+    "polymer": "Polymer/polymer#^1.0.0"
   },
   "devDependencies": {
     "bootstrap-sass": "^3.3.4",

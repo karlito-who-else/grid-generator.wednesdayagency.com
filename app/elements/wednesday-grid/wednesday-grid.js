@@ -4,41 +4,22 @@
   Polymer({
     is: 'wednesday-grid',
     properties: {
-      // class: {
-      //   type: String,
-      //   value: ''
-      // }
       container: {
         type: String,
         value: ''
-      },
-      grid: {
-        type: Number,
-        value: null
       }
     },
+
     ready: function() {
-      var classList = Polymer.dom(this).node.classList;
+      this.bootstrapContainerTypes();
+      this.bootstrapGridClass();
+    },
 
-      // console.log('class', this.class);
-
-      // console.log('classList', classList);
-
-      // classList.forEach(function(className) {
-      //   console.log('className', className);
-      // });
-
-      this.items = Array.prototype.slice.call(classList);
-
-      var grid = this.$.grid;
-      grid.style.display = 'none';
-
-      console.log('this.container', this.container);
-
+    bootstrapContainerTypes: function() {
+      console.log('bootstrapContainerTypes');
       var containers = Polymer.dom(this.root).querySelectorAll('.container');
 
       for (var i = 0; i < containers.length; i++) {
-
         containers[i].classList.add('container-' + this.container);
 
         switch (this.container) {
@@ -48,51 +29,65 @@
             containers[i].classList.add('container-fluid');
           break;
         }
-
       }
-
     },
 
-    toggleGridColumns: function() {
-      switch (this.grid) {
-        case null:
-          this.grid = 12;
-        break;
-        case 12:
-          this.grid = 24;
-        break;
-        case 24:
-          this.grid = null;
-        break;
-      }
+    bootstrapGridClass: function() {
+      console.log('bootstrapGridClass');
+      this.$.grid.classList.toggle('show-12-columns');
+    },
 
-      console.log('this.grid', this.grid);
+    toggleExampleContentVisibility: function() {
+      console.log('toggleExampleContentVisibility');
+      this.$.example.style.display = (this.$.example.style.display !== 'none' ? 'none' : '');
+    },
 
-      var containers = Polymer.dom(this.root).querySelectorAll('.container');
-      
+    toggleGridColumnAmount: function() {
+      console.log('toggleGridColumnAmount');
+      this.$.grid.classList.toggle('show-12-columns');
+      this.$.grid.classList.toggle('show-24-columns');
     },
 
     toggleGridVisibility: function() {
-      // console.log('toggleGridVisibility grid');
-      var grid = this.$.grid;
-      grid.style.display = (grid.style.display !== 'none' ? 'none' : '');
+      console.log('toggleGridVisibility');
+      this.$.grid.style.display = (this.$.grid.style.display !== 'none' ? 'none' : '');
     },
 
-    toggleDangerVisibility: function() {
-      // console.log('toggleDangerVisibility grid');
-      var wednesdayCell = Polymer.dom(this.root).querySelectorAll('wednesday-cell');
+    toggleLayoutWarningsVisibility: function() {
+      console.log('toggleLayoutWarningsVisibility');
+      // var wednesdayCell = Polymer.dom(this.root).querySelectorAll('wednesday-cell');
+      var wednesdayCell = Polymer.dom(this.$.content).querySelectorAll('wednesday-cell');
       for (var i = 0; i < wednesdayCell.length; i++) {
-        wednesdayCell[i].toggleDangerVisibility();
+        wednesdayCell[i].toggleLayoutWarningsVisibility();
       }
     },
 
     toggleLabelVisibility: function() {
-      // console.log('toggleLabelVisibility grid');
-      var wednesdayCell = Polymer.dom(this.root).querySelectorAll('wednesday-cell');
+      console.log('toggleLabelVisibility');
+      // var wednesdayCell = Polymer.dom(this.root).querySelectorAll('wednesday-cell');
+      var wednesdayCell = Polymer.dom(this.$.content).querySelectorAll('wednesday-cell');
       for (var i = 0; i < wednesdayCell.length; i++) {
         wednesdayCell[i].toggleLabelVisibility();
       }
-    }
+    },
 
+    renderToImage: function(event) {
+      console.log('renderToImage');
+      var link = event.target;
+
+      function downloadCanvas(link, canvas, filename) {
+        link.href = canvas.toDataURL();
+        link.download = filename;
+      }
+
+      html2canvas([this.$.grid], {
+        logging: true,
+        // allowTaint: true,
+        useCORS: true,
+        onrendered: function(canvas) {
+          downloadCanvas(link, canvas, 'screenshot.png');
+        }
+      });
+    }
   });
 })();

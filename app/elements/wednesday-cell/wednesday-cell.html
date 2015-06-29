@@ -2,9 +2,8 @@
   <link rel="import" type="css" href="wednesday-cell.css">
   <template>
     <ul id="list">
-      <template is="dom-repeat" id="labels" items="{{items}}" filter="isManuallyAssigned" observe="display item.display">
-        <li id="label" style="display: block;">{{item.name}}</li>
-        <li id="label2">{{item.display}}</li>
+      <template is="dom-repeat" id="labels" items="{{labels}}" as="label" filter="isManuallyAssigned">
+        <li id="label" hidden$="{{hidden}}">{{label.name}}</li>
       </template>
     </ul>
   </template>

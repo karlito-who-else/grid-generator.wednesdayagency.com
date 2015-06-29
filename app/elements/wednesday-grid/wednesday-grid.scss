@@ -3,6 +3,19 @@
   margin-bottom: 5rem;
 }
 
+paper-toolbar {
+
+  a {
+
+    iron-icon,
+    paper-icon-button{
+      pointer-events: none;
+    }
+
+  }
+
+}
+
 main {
   position: relative;
 }
@@ -18,8 +31,8 @@ section {
 
 #grid {
   bottom: 0;
-  // display: none;
   left: 0;
+  min-height: 40rem;
   pointer-events: none;
   position: absolute;
   right: 0;
@@ -30,9 +43,17 @@ section {
     height: 100%;
   }
 
-  [class^="column-"] {
+  &.show-12-columns {
 
-    &.visible {
+    .column-12 {
+      background-color: rgba(0, 155, 155, 0.25);
+    }
+
+  }
+
+  &.show-24-columns {
+
+    .column-24 {
       background-color: rgba(0, 155, 155, 0.25);
     }
 
