@@ -45,7 +45,7 @@ gulp.task('styles', () => {
     //   ]
     // }))
     .pipe(remember('styles')) // add back all files to the stream
-    .pipe(sourcemaps.write('./maps'))
+    // .pipe(sourcemaps.write('./maps')) // Causes the page to be reloaded after the styles are injected.  This was working, I'm not sure what changed.
     .pipe(gulp.dest(config.path.destination.base))
     .pipe(browserSync.stream({match: '**/*.css'}))
     .on('error', util.log);

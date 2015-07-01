@@ -1,0 +1,95 @@
+@import '../../styles/base/variables';
+@import "../../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+
+:host {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+paper-material {
+  background-color: var(--secondary-background-color);
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 400px;
+  width: calc(98.66% - 16px);
+
+  @media (max-width: $screen-xs-max) {
+    --menu-container-display: none;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    margin-bottom: 1.5rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    margin-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 1.5rem;
+  }
+
+}
+
+header {
+  width: 100%;
+
+  paper-icon-button {
+    left: -4px;
+    top: -4px;
+  }
+
+}
+
+paper-input {
+  flex: 1;
+
+  @media (max-width: $screen-xs-max) {
+    --menu-container-display: none;
+    width: auto;
+
+    &:not(:first-of-type) {
+      margin-left: 1rem;
+    }
+
+    &:not(:last-of-type) {
+      margin-right: 1rem;
+    }
+
+  }
+
+  @media (min-width: $screen-sm-min) {
+    width: 50%;
+
+    &:not(:first-of-type) {
+      margin-left: 1.5rem;
+    }
+
+    &:not(:last-of-type) {
+      margin-right: 1.5rem;
+    }
+
+  }
+
+}
+
+dl {
+  margin-top: 2rem;
+
+  dt {
+    margin-top: 1rem;
+  }
+
+  dd {
+    margin-left: 0;
+  }
+
+}

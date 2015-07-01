@@ -1,0 +1,27 @@
+<dom-module id="wednesday-breakpoints">
+  <link rel="import" href="/bower_components/paper-fab/paper-fab.html">
+  <link rel="import" href="../wednesday-breakpoint/wednesday-breakpoint.html">
+  <link rel="import" type="css" href="wednesday-breakpoints.css">
+  <style>
+    :host {
+      @apply(--layout-flex);
+      @apply(--layout-horizontal);
+      /*@apply(--layout-center-center);*/
+    }
+  </style>
+  <iron-localstorage name="wednesday-breakpoints-storage" value="{{breakpoints}}" on-iron-localstorage-load-empty="initializeDefaultBreakpoints">
+  </iron-localstorage>
+  <template>
+
+    <header>
+      <paper-fab icon="add" on-tap="addBreakpoint"></paper-fab>
+    </header>
+
+
+    <template is="dom-repeat" id="breakpoints" items="{{breakpoints}}" as="breakpoint">
+      <wednesday-breakpoint id$="{{ breakpointId(index) }}" index="{{index}}" viewport="{{breakpoint.viewport}}" grid="{{breakpoint.grid}}"></wednesday-breakpoint>
+    </template>
+
+  </template>
+  <script src="wednesday-breakpoints.js"></script>
+</dom-module>

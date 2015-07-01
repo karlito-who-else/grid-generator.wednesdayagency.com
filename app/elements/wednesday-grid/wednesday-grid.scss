@@ -1,6 +1,16 @@
 :host {
-  display: block;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 5rem;
+}
+
+header {
+
+  &.container-fluid {
+    width: 100%;
+  }
+
 }
 
 paper-toolbar {
@@ -20,16 +30,12 @@ main {
   position: relative;
 }
 
-section {
-
-}
-
-#example {
+section#example {
   position: relative;
   z-index: 2;
 }
 
-#grid {
+section#grid {
   bottom: 0;
   left: 0;
   min-height: 40rem;
@@ -46,7 +52,14 @@ section {
   &.show-12-columns {
 
     .column-12 {
-      background-color: rgba(0, 155, 155, 0.25);
+      // border-left: 1px solid rgba(0, 155, 155, 0.85);
+      // border-right: 1px solid rgba(0, 155, 155, 0.85);
+      outline: 1px solid rgba(0, 155, 155, 0.85);
+
+      > div {
+        background-color: rgba(0, 155, 155, 0.25);
+      }
+
     }
 
   }
@@ -54,11 +67,24 @@ section {
   &.show-24-columns {
 
     .column-24 {
-      background-color: rgba(0, 155, 155, 0.25);
+      // border-left: 1px solid rgba(0, 155, 155, 0.85);
+      // border-right: 1px solid rgba(0, 155, 155, 0.85);
+      outline: 1px solid rgba(0, 155, 155, 0.85);
+
+      > div {
+        background-color: rgba(0, 155, 155, 0.25);
+      }
+
     }
 
   }
 
+}
+
+#title {
+  bottom: 0;
+  left: 15px;
+  position: absolute;
 }
 
 .container-fixed {

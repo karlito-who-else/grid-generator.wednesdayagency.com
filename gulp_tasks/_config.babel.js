@@ -108,17 +108,18 @@ config.instance.browsersync = {
       '/node_modules': 'node_modules'
     }
   },
-  snippetOptions: {
-    rule: {
-      match: '<span id="browser-sync-binding"></span>',
-      fn: function(snippet) {
-        // temporary workaround below as browser-sync 2.7.11 tries to inject
-        // the client with an incorrect version number appended to the filename
-        snippet = '<script async src="/browser-sync/browser-sync-client.js"></script>';
-        return snippet;
-      }
-    }
-  },
+  // snippetOptions: {
+  //   rule: {
+  //     match: '<span id="browser-sync-binding"></span>',
+  //     fn: function(snippet) {
+  //       // temporary workaround below as browser-sync 2.7.11 tries to inject
+  //       // the client with an incorrect version number appended to the filename
+  //       snippet = '<script async src="/browser-sync/browser-sync-client.js"></script>';
+  //       console.log('snippet', snippet);
+  //       return snippet;
+  //     }
+  //   }
+  // },
   ui: {
     port: manifest.config.server.browsersync.ui.port
   }

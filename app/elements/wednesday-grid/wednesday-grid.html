@@ -14,16 +14,16 @@
         <paper-icon-button icon="warning" on-tap="toggleLayoutWarningsVisibility"></paper-icon-button>
         <!-- <paper-icon-button icon="bookmark" on-tap="bookmarkURL"></paper-icon-button> -->
         <!-- <paper-icon-button icon="code" on-tap="generateCode"></paper-icon-button> -->
-
-        <a download on-mouseover="renderToImage">
+        <!-- <a download on-mouseover="renderToImage">
           <iron-icon icon="image:image"></iron-icon>
-        </a>
+        </a> -->
+        <paper-icon-button icon="image:image" on-tap="renderToImage"></paper-icon-button>
         <!-- <paper-button on-tap="generatePhotoshopSettings">
           <iron-icon src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg"></iron-icon>
         </paper-button> -->
       </paper-toolbar>
     </header>
-    <main>
+    <main id="main">
       <section id="example">
         <div class="container">
           <content></content>
@@ -32,155 +32,161 @@
       <section id="grid">
         <div class="container">
           <div class="row">
-            <div class="col-xs-1">
-              <div class="column-12">
+            <div class="col-xs-1 column-12">
+              <div>
                 <div class="row">
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-xs-1">
-              <div class="column-12">
+            <div class="col-xs-1 column-12">
+              <div>
                 <div class="row">
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-xs-1">
-              <div class="column-12">
+            <div class="col-xs-1 column-12">
+              <div>
                 <div class="row">
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-xs-1">
-              <div class="column-12">
+            <div class="col-xs-1 column-12">
+              <div>
                 <div class="row">
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-xs-1">
-              <div class="column-12">
+            <div class="col-xs-1 column-12">
+              <div>
                 <div class="row">
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-xs-1">
-              <div class="column-12">
+            <div class="col-xs-1 column-12">
+              <div>
                 <div class="row">
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-xs-1">
-              <div class="column-12">
+            <div class="col-xs-1 column-12">
+              <div>
                 <div class="row">
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-xs-1">
-              <div class="column-12">
+            <div class="col-xs-1 column-12">
+              <div>
                 <div class="row">
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-xs-1">
-              <div class="column-12">
+            <div class="col-xs-1 column-12">
+              <div>
                 <div class="row">
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-xs-1">
-              <div class="column-12">
+            <div class="col-xs-1 column-12">
+              <div>
                 <div class="row">
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-xs-1">
-              <div class="column-12">
+            <div class="col-xs-1 column-12">
+              <div>
                 <div class="row">
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-xs-1">
-              <div class="column-12">
+            <div class="col-xs-1 column-12">
+              <div>
                 <div class="row">
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
-                  <div class="col-xs-6">
-                    <div class="column-24"></div>
+                  <div class="col-xs-6 column-24">
+                    <div></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <h3 id="title"></h3>
         </div>
       </section>
     </main>
   </template>
+
   <script src="/bower_components/html2canvas/build/html2canvas.js"></script>
+
+  <!--
+  <script src="/node_modules/html2canvas/dist/html2canvas.js"></script>
+   -->
   <script src="wednesday-grid.js"></script>
 </dom-module>

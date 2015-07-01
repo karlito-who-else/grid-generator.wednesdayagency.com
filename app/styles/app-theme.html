@@ -26,12 +26,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     --default-primary-color: #333;
     --light-primary-color: #ccc;
     --text-primary-color: #fff; /*text/icons*/
-    --accent-color: #FF4081;
+    --accent-color: #3f3f3f;
     --primary-background-color: #c5cae9;
     --primary-text-color: #212121;
     --secondary-text-color: #727272;
     --disabled-text-color: #bdbdbd;
     --divider-color: #B6B6B6;
+    --secondary-background-color: #f9f9f9;
 
     /* Components */
 
@@ -47,9 +48,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
   /* Wednesday styles */
-  /*wednesday-cell ul {
-    background-color: var(--default-primary-color);
-  }*/
+  body /deep/ #main {
+      background-color: var(--secondary-background-color);
+  }
 
   body /deep/ wednesday-grid /deep/ paper-toolbar /deep/ a,
   body /deep/ wednesday-grid /deep/ paper-toolbar /deep/ paper-button {
@@ -58,6 +59,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     padding: 8px;
   }
 
+  body /deep/ iron-pages /deep/ section > h2,
+  body /deep/ iron-pages /deep/ section > p {
+    display: none;
+  }
+/*
+  body /deep/ wednesday-breakpoints /deep/ paper-fab {
+    background-color: var(--accent-color);
+  }
+*/
   /* General styles */
 
   #drawerToolbar {

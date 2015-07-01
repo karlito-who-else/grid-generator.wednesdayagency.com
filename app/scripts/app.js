@@ -52,11 +52,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
   };
 
-  app.toggleDangerVisibility = function() {
-    console.log('toggleDangerVisibility global');
+  app.toggleGridColumnAmount = function() {
+    console.log('toggleGridColumnAmount global');
     var wednesdayGrid = document.querySelectorAll('wednesday-grid');
     for (var i = 0; i < wednesdayGrid.length; i++) {
-      wednesdayGrid[i].toggleDangerVisibility();
+      wednesdayGrid[i].toggleGridColumnAmount();
+    }
+  };
+
+  app.toggleExampleContentVisibility = function() {
+    console.log('toggleExampleContentVisibility global');
+    var wednesdayGrid = document.querySelectorAll('wednesday-grid');
+    for (var i = 0; i < wednesdayGrid.length; i++) {
+      wednesdayGrid[i].toggleExampleContentVisibility();
     }
   };
 
@@ -65,6 +73,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     var wednesdayGrid = document.querySelectorAll('wednesday-grid');
     for (var i = 0; i < wednesdayGrid.length; i++) {
       wednesdayGrid[i].toggleLabelVisibility();
+    }
+  };
+
+  app.toggleLayoutWarningsVisibility = function() {
+    console.log('toggleLayoutWarningsVisibility global');
+    var wednesdayGrid = document.querySelectorAll('wednesday-grid');
+    for (var i = 0; i < wednesdayGrid.length; i++) {
+      wednesdayGrid[i].toggleLayoutWarningsVisibility();
+    }
+  };
+
+  app.addMediaQueryInputFieldset = function() {
+    console.log('toggleLayoutWarningsVisibility global');
+    
+  };
+
+  app.generateStyleElements = function() {
+    console.log('generateStyleElements global');
+    var breakPoints = document.querySelectorAll('input.breakpoint');
+    for (var i = 0; i < breakPoints.length; i++) {
+      var newStyle = document.querySelector('head').createElement('style');
+      newStyle.id = 'media-query-' + breakPoints[i].value;
+      document.querySelector('style').textContent += '@media screen and (min-width:' + breakPoints[i].value + 'px) { div { color: red; } }';
     }
   };
 
