@@ -14,6 +14,7 @@ header {
 }
 
 paper-toolbar {
+  margin-bottom: 1rem;
 
   a {
 
@@ -28,6 +29,7 @@ paper-toolbar {
 
 main {
   position: relative;
+  width: 100%;
 }
 
 section#example {
@@ -52,8 +54,6 @@ section#grid {
   &.show-12-columns {
 
     .column-12 {
-      // border-left: 1px solid rgba(0, 155, 155, 0.85);
-      // border-right: 1px solid rgba(0, 155, 155, 0.85);
       outline: 1px solid rgba(0, 155, 155, 0.85);
 
       > div {
@@ -67,8 +67,6 @@ section#grid {
   &.show-24-columns {
 
     .column-24 {
-      // border-left: 1px solid rgba(0, 155, 155, 0.85);
-      // border-right: 1px solid rgba(0, 155, 155, 0.85);
       outline: 1px solid rgba(0, 155, 155, 0.85);
 
       > div {

@@ -23,8 +23,8 @@
 
       this.breakpoints = [
         {
-          viewport: 640,
-          grid: (610 + this.gridGutterWidth)
+          viewport: 320,
+          grid: (290 + this.gridGutterWidth)
         },
         {
           viewport: 768,

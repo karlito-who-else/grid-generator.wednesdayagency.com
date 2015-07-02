@@ -1,0 +1,57 @@
+@import './base/variables';
+
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/normalize";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/print";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/scaffolding";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/grid";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/utilities";
+
+html,
+body,
+#container,
+#container div {
+  height: 100%;
+}
+
+body {
+
+  &.show-12-columns {
+
+    .column-12 {
+      outline: 1px solid rgba(0, 155, 155, 0.85);
+
+      > div {
+        background-color: rgba(0, 155, 155, 0.25);
+
+        > div {
+          display: none;
+        }
+
+      }
+
+    }
+
+  }
+
+  &.show-24-columns {
+
+    .column-24 {
+      outline: 1px solid rgba(0, 155, 155, 0.85);
+
+      > div {
+        background-color: rgba(0, 155, 155, 0.25);
+      }
+
+    }
+
+  }
+
+  #title {
+    bottom: 0;
+    left: 15px;
+    position: absolute;
+  }
+
+}

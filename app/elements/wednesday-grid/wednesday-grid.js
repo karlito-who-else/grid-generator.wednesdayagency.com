@@ -34,6 +34,7 @@
 
     bootstrapGridClass: function() {
       console.log('bootstrapGridClass');
+      this.gridColumns = 12;
       this.$.grid.classList.toggle('show-12-columns');
     },
 
@@ -44,8 +45,15 @@
 
     toggleGridColumnAmount: function() {
       console.log('toggleGridColumnAmount');
-      this.$.grid.classList.toggle('show-12-columns');
-      this.$.grid.classList.toggle('show-24-columns');
+      this.gridColumns = (this.gridColumns !== 24 ? 24 : 12);
+
+      this.$.grid.classList.remove('show-12-columns');
+      this.$.grid.classList.remove('show-24-columns');
+
+      this.$.grid.classList.add('show-' + this.gridColumns + '-columns');
+
+      // this.$.grid.classList.toggle('show-12-columns');
+      // this.$.grid.classList.toggle('show-24-columns');
     },
 
     toggleGridVisibility: function() {
@@ -57,6 +65,7 @@
       console.log('toggleLayoutWarningsVisibility');
       // var wednesdayCell = Polymer.dom(this.root).querySelectorAll('wednesday-cell');
       var wednesdayCell = Polymer.dom(this.$.content).querySelectorAll('wednesday-cell');
+      console.log('toggleLabelVisibility', this, this.$.content, wednesdayCell);
       for (var i = 0; i < wednesdayCell.length; i++) {
         wednesdayCell[i].toggleLayoutWarningsVisibility();
       }
@@ -66,52 +75,34 @@
       console.log('toggleLabelVisibility');
       // var wednesdayCell = Polymer.dom(this.root).querySelectorAll('wednesday-cell');
       var wednesdayCell = Polymer.dom(this.$.content).querySelectorAll('wednesday-cell');
+      console.log('toggleLabelVisibility', this, this.$.content, wednesdayCell);
       for (var i = 0; i < wednesdayCell.length; i++) {
         wednesdayCell[i].toggleLabelVisibility();
       }
     },
 
-    // renderToImage: function(event) {
-    renderToImage: function() {
+    renderToImage: function(event) {
       console.log('renderToImage');
       var _this = this;
       var breakpoints = document.querySelector('wednesday-breakpoints').breakpoints;
-      // var link = event.target;
+      var classList = event.target.closest('wednesday-grid').querySelector('#grid-container').classList;
+      var containerType = 'container';
 
-      // function downloadCanvas(link, canvas, filename) {
-      //   link.href = canvas.toDataURL();
-      //   link.download = filename;
-      // }
+      if (classList.contains('container')) {
+        containerType = 'container';
+      } else if (classList.contains('container-fluid')) {
+        containerType = 'container-fluid';
+      }
 
-      (function renderBreakpoint (i) {
-        var breakpointIndex = i - 1;
-
-        Polymer.dom(_this.$.grid).node.style.width = breakpoints[breakpointIndex].viewport + 'px';
-        Polymer.dom(_this.$.title).node.innerHTML = breakpoints[breakpointIndex].viewport + 'px';
-
-        // html2canvas(grid).then(function(canvas) {
-        //   console.log('then', canvas);
-        //   window.open(canvas.toDataURL(), 'grid - ' + breakpoints[breakpointIndex].viewport + 'px');
-        // });
-
-        setTimeout(html2canvas([_this.$.grid], {
-          logging: true,
-          onrendered: function(canvas) {
-            // downloadCanvas(link, canvas, 'screenshot.png');
-            window.open(canvas.toDataURL('image/png', 1.0), 'grid - ' + breakpoints[breakpointIndex].viewport + 'px');
-          }
-        }), 50);
-
-        setTimeout(function() {
-          if (--i) {
-            renderBreakpoint(i);
-          } else {
-            Polymer.dom(_this.$.grid).node.style.width = 'auto';
-            Polymer.dom(_this.$.title).node.innerHTML = null;
-          }
-        }, 250);
-
-      })(breakpoints.length);
+      for (var i = 0; i < breakpoints.length; i++) {
+        window.open(
+          '/screenshot-responsive.html?columns=' + _this.gridColumns + '&container-type=' + containerType + '&title=' + breakpoints[i].viewport + 'px',
+          'grid - ' + breakpoints[i].viewport + 'px',
+          'titlebar=grid - ' + breakpoints[i].viewport + 'px, ' +
+          'height=500px,' +
+          'width=' + breakpoints[i].viewport + 'px'
+        );
+      }
 
     }
   });
