@@ -96,7 +96,7 @@
 
       for (var i = 0; i < breakpoints.length; i++) {
         window.open(
-          '/screenshot-responsive.html?columns=' + _this.gridColumns + '&container-type=' + containerType + '&title=' + breakpoints[i].viewport + 'px',
+          '/screenshot.html?columns=' + _this.gridColumns + '&container-type=' + containerType + '&width=' + breakpoints[i].viewport,
           'grid - ' + breakpoints[i].viewport + 'px',
           'titlebar=grid - ' + breakpoints[i].viewport + 'px, ' +
           'height=500px,' +

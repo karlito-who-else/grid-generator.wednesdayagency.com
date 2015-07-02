@@ -29,7 +29,7 @@ ul {
 
 }
 
-@media (min-width: 992px) {
+@media (min-width: $screen-md-min) {
 
   ul {
     padding: .5rem 0;

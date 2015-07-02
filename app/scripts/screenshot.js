@@ -19,7 +19,7 @@
 
   var columns = getQueryVariable('columns');
   var containerType = getQueryVariable('container-type');
-  var title = getQueryVariable('title');
+  var width = getQueryVariable('width');
 
   if (columns) {
     var columnsClassName = 'show-' + columns + '-columns';
@@ -31,9 +31,10 @@
     document.querySelector('#container').classList.add(containerClassName);
   }
 
-  if (title) {
-    document.querySelector('#title').innerHTML = title;
-    document.querySelector('title').innerHTML = 'Grid (' + title + ')';
+  if (width && columns) {
+    document.querySelector('#label-width').innerHTML = width + 'px';
+    document.querySelector('#label-columns').innerHTML = columns;
+    document.querySelector('title').innerHTML = 'Grid: ' + width + 'px ,' + columns + ' columns';
   }
 
   setTimeout(html2canvas([document.body], {

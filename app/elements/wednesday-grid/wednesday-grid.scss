@@ -58,6 +58,11 @@ section#grid {
 
       > div {
         background-color: rgba(0, 155, 155, 0.25);
+
+        > div {
+          display: none;
+        }
+
       }
 
     }
@@ -65,6 +70,22 @@ section#grid {
   }
 
   &.show-24-columns {
+
+    .column-12 {
+
+      > div {
+
+        @media (max-width: $screen-xs-max) {
+
+          > div {
+            display: none;
+          }
+
+        }
+
+      }
+
+    }
 
     .column-24 {
       outline: 1px solid rgba(0, 155, 155, 0.85);
