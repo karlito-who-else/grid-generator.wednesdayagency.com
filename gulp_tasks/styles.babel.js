@@ -14,11 +14,13 @@ import util from 'gulp-util';
 
 import {config, browserSync} from './_config.babel.js';
 
+const sourceFiles = config.files.styles;
+
 gulp.task('styles', () => {
   // stream not returned, see:
   // https://github.com/dlmanning/gulp-sass/wiki/Common-Issues-and-Their-Fixes#gulp-watch-stops-working-on-an-error
   // run from base to include files in elements folder
-  gulp.src(config.path.source.base + config.files.styles)
+  gulp.src(sourceFiles)
     .pipe(debug({
       title: 'styles:'
     }))
@@ -52,7 +54,7 @@ gulp.task('styles', () => {
 });
 
 gulp.task('styles:watch', function() {
-  var watcher = gulp.watch(config.path.source.base + config.files.styles, ['styles']);
+  var watcher = gulp.watch(sourceFiles, ['styles']);
   console.log(cached.caches);
   watcher.on('change', function(event) {
     console.log('change', cached.caches);

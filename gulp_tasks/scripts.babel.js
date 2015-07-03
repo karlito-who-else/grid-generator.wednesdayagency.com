@@ -14,9 +14,11 @@ import util from 'gulp-util';
 // import {config, browserSync} from './_config.babel.js';
 import config from './_config.babel.js';
 
+const sourceFiles = config.files.scripts;
+
 gulp.task('scripts', () => {
   // run from base to include files in site root and elements folder
-  return gulp.src(config.path.source.base + config.files.scripts)
+  return gulp.src(sourceFiles)
     .pipe(debug({
       title: 'scripts:'
     }))
@@ -36,5 +38,5 @@ gulp.task('scripts', () => {
 });
 
 gulp.task('scripts:watch', function() {
-  gulp.watch(config.path.source.base + config.files.scripts, ['scripts']);
+  gulp.watch(sourceFiles, ['scripts']);
 });

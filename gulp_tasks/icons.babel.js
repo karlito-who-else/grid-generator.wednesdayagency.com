@@ -7,8 +7,10 @@ import util from 'gulp-util';
 
 import config from './_config.babel.js';
 
+const sourceFiles = config.files.icons;
+
 gulp.task('icons', () => {
-  return gulp.src(config.path.source.base + config.files.icons)
+  return gulp.src(sourceFiles)
     .pipe(debug({
       title: 'icons:'
     }))
@@ -38,5 +40,5 @@ gulp.task('icons', () => {
 });
 
 gulp.task('icons:watch', function() {
-  gulp.watch(config.path.source.icons + config.files.icons, ['icons']);
+  gulp.watch(sourceFiles, ['icons']);
 });
