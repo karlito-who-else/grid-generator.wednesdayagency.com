@@ -13,6 +13,7 @@
     ready: function() {
       this.bootstrapContainerTypes();
       this.bootstrapGridClass();
+      this.bootstrapSassJs();
     },
 
     bootstrapContainerTypes: function() {
@@ -36,6 +37,43 @@
       console.log('bootstrapGridClass');
       this.gridColumns = 12;
       this.$.grid.classList.toggle('show-12-columns');
+    },
+
+    bootstrapSassJs: function() {
+      Sass.setWorkerUrl('/bower_components/sass.js/dist/sass.worker.js');
+
+      var dynamicStyle = this.$.dynamic;
+      // var dynamicStyle = document.createElement('style');
+      // this.root.appendChild(dynamicStyle);
+
+      var sass = new Sass();
+
+      var scss = '#grid-container {background: blue;}'
+
+      sass.compile(scss, function(result) {
+        // console.log(dynamicStyle, result);
+
+        if (dynamicStyle.styleSheet) {
+          console.log('true');
+          dynamicStyle.styleSheet.cssText = result.text;
+        } else {
+          console.log('false');
+          dynamicStyle.appendChild(document.createTextNode(result.text));
+        }
+
+      });
+      sass.compileFile('/styles/sass/sass-for-browser.scss', function(result) {
+        // console.log(dynamicStyle, result);
+
+        if (dynamicStyle.styleSheet) {
+          console.log('true');
+          dynamicStyle.styleSheet.cssText = result.text;
+        } else {
+          console.log('false');
+          dynamicStyle.appendChild(document.createTextNode(result.text));
+        }
+
+      });
     },
 
     toggleExampleContentVisibility: function() {

@@ -5,10 +5,16 @@
   <link rel="import" href="../wednesday-cell/wednesday-cell.html">
   <link rel="import" type="css" href="wednesday-grid.css">
   <template>
+    <style id="dynamic">
+      #grid-container {
+        background: green;
+      }
+    </style>
     <header class="container">
       <paper-toolbar>
         <paper-icon-button icon="visibility" on-tap="toggleGridVisibility"></paper-icon-button>
         <paper-icon-button icon="view-column" on-tap="toggleGridColumnAmount"></paper-icon-button>
+        <paper-icon-button icon="border-outside" on-tap="toggleOutlineVisibility"></paper-icon-button>
         <paper-icon-button icon="view-module" on-tap="toggleExampleContentVisibility"></paper-icon-button>
         <paper-icon-button icon="label" on-tap="toggleLabelVisibility"></paper-icon-button>
         <paper-icon-button icon="warning" on-tap="toggleLayoutWarningsVisibility"></paper-icon-button>
@@ -184,9 +190,9 @@
   </template>
 
   <script src="/bower_components/html2canvas/build/html2canvas.js"></script>
-
   <!--
   <script src="/node_modules/html2canvas/dist/html2canvas.js"></script>
    -->
+  <script src="/bower_components/sass.js/dist/sass.js"></script>
   <script src="wednesday-grid.js"></script>
 </dom-module>

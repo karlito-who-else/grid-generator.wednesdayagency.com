@@ -1,13 +1,13 @@
-$initial-font-size: 16;
+$initial-font-size: 16 !default;
 
-$base-font-percentage: 62.5;
-$base-font-size: percentage(62.5 / 100);
+$base-font-percentage: 62.5 !default;
+$base-font-size: percentage(62.5 / 100) !default;
 
-$rem-size: (($initial-font-size * $base-font-percentage) / 100);
+$rem-size: (($initial-font-size * $base-font-percentage) / 100) !default;
 
-// $grid-gutter-width: $rem-size +px;
-// $grid-gutter-width: #{$rem-size +px};
-// $grid-gutter-width: 30px;
-// $grid-columns: 12;
+// $grid-gutter-width: $rem-size +px !default;
+// $grid-gutter-width: #{$rem-size +px} !default;
+// $grid-gutter-width: 30px !default;
+// $grid-columns: 12 !default;
 
-// $icons-font-path: "../bower_components/materialize/font/material-design-icons/";
+// $icons-font-path: "../bower_components/materialize/font/material-design-icons/" !default;
