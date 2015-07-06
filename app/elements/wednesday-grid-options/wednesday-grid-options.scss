@@ -1,0 +1,13 @@
+@import '../../styles/base/variables';
+@import "../../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+
+:host {
+  display: block;
+  flex-wrap: wrap;
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+header {
+  width: 100%;
+}

@@ -54,9 +54,9 @@ section#grid {
     height: 100%;
   }
 
-  &.show-12-columns {
+  &.show-main-grid {
 
-    .column-12 {
+    .main-grid {
       outline: 1px solid rgba(0, 155, 155, 0.85);
 
       > div {
@@ -72,9 +72,9 @@ section#grid {
 
   }
 
-  &.show-24-columns {
+  &.show-nested-grid {
 
-    .column-12 {
+    .main-grid {
 
       > div {
 
@@ -90,7 +90,7 @@ section#grid {
 
     }
 
-    .column-24 {
+    .nested-grid {
       outline: 1px solid rgba(0, 155, 155, 0.85);
 
       > div {

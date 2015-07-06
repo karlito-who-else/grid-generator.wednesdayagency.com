@@ -11,6 +11,10 @@
     },
 
     ready: function() {
+      this.columns = 12;
+      this.grid = 'main';
+      this.gutterWidth = 30;
+
       this.bootstrapContainerTypes();
       this.bootstrapGridClass();
       this.bootstrapSassJs();
@@ -35,45 +39,59 @@
 
     bootstrapGridClass: function() {
       console.log('bootstrapGridClass');
-      this.gridColumns = 12;
-      this.$.grid.classList.toggle('show-12-columns');
+      this.$.grid.classList.toggle('show-main-grid');
     },
 
     bootstrapSassJs: function() {
+
+      function addStyles(compilationResult) {
+        console.log('addStyles', compilationResult);
+
+        if (dynamicStyle.styleSheet) {
+          console.log('Adding style via element.styleSheet');
+          dynamicStyle.styleSheet.cssText = compilationResult.text;
+        } else {
+          console.log('Adding style via element.appendChild');
+          dynamicStyle.innerHTML = '';
+          dynamicStyle.appendChild(document.createTextNode(compilationResult.text));
+        }
+      }
+
       Sass.setWorkerUrl('/bower_components/sass.js/dist/sass.worker.js');
 
+      var _this = this;
+
       var dynamicStyle = this.$.dynamic;
-      // var dynamicStyle = document.createElement('style');
-      // this.root.appendChild(dynamicStyle);
 
       var sass = new Sass();
 
-      var scss = '#grid-container {background: blue;}'
+      var customScss = '#grid-container {background: red;}';
 
-      sass.compile(scss, function(result) {
-        // console.log(dynamicStyle, result);
+      var allScss;
 
-        if (dynamicStyle.styleSheet) {
-          console.log('true');
-          dynamicStyle.styleSheet.cssText = result.text;
-        } else {
-          console.log('false');
-          dynamicStyle.appendChild(document.createTextNode(result.text));
-        }
+      sass.preloadFiles('/styles/sass/', '', ['sass-for-browser.scss'], function() {
+
+        sass.readFile('sass-for-browser.scss', function(baseScss) {
+          // console.log(baseScss);
+
+          allScss = customScss.concat(baseScss);
+
+          sass.compile(allScss, addStyles);
+
+          setTimeout(function() {
+            customScss = '$grid-gutter-width: ' + _this.gutterWidth.toString() + 'px !default; ' +
+            '$grid-columns: ' + _this.columns.toString() + ' !default; ' +
+            '#grid-container {background: orange;}';
+
+            allScss = customScss.concat(baseScss);
+
+            sass.compile(allScss, addStyles);
+          }, 5000);
+
+        });
 
       });
-      sass.compileFile('/styles/sass/sass-for-browser.scss', function(result) {
-        // console.log(dynamicStyle, result);
 
-        if (dynamicStyle.styleSheet) {
-          console.log('true');
-          dynamicStyle.styleSheet.cssText = result.text;
-        } else {
-          console.log('false');
-          dynamicStyle.appendChild(document.createTextNode(result.text));
-        }
-
-      });
     },
 
     toggleExampleContentVisibility: function() {
@@ -83,15 +101,12 @@
 
     toggleGridColumnAmount: function() {
       console.log('toggleGridColumnAmount');
-      this.gridColumns = (this.gridColumns !== 24 ? 24 : 12);
+      this.grid = (this.grid !== 'nested' ? 'nested' : 'main');
 
-      this.$.grid.classList.remove('show-12-columns');
-      this.$.grid.classList.remove('show-24-columns');
+      this.$.grid.classList.remove('show-main-grid');
+      this.$.grid.classList.remove('show-nested-grid');
 
-      this.$.grid.classList.add('show-' + this.gridColumns + '-columns');
-
-      // this.$.grid.classList.toggle('show-12-columns');
-      // this.$.grid.classList.toggle('show-24-columns');
+      this.$.grid.classList.add('show-' + this.grid + '-columns');
     },
 
     toggleGridVisibility: function() {
@@ -134,7 +149,7 @@
 
       for (var i = 0; i < breakpoints.length; i++) {
         window.open(
-          '/screenshot.html?columns=' + _this.gridColumns + '&container-type=' + containerType + '&width=' + breakpoints[i].viewport,
+          '/screenshot.html?columns=' + _this.grid + '&container-type=' + containerType + '&width=' + breakpoints[i].viewport,
           'grid - ' + breakpoints[i].viewport + 'px',
           'titlebar=grid - ' + breakpoints[i].viewport + 'px, ' +
           'height=500px,' +

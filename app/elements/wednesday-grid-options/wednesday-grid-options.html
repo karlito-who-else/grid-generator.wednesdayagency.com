@@ -1,0 +1,32 @@
+<dom-module id="wednesday-grid-options">
+  <link rel="import" href="/bower_components/paper-input/paper-input.html">
+  <link rel="import" href="/bower_components/paper-material/paper-material.html">
+  <link rel="import" href="../wednesday-breakpoints/wednesday-breakpoints.html">
+  <link rel="import" type="css" href="wednesday-grid-options.css">
+  <style>
+    :host {
+      @apply(--layout-flex);
+      @apply(--layout-horizontal);
+      /*@apply(--layout-center-center);*/
+    }
+  </style>
+  <iron-localstorage name="wednesday-grid-options-storage" value="{{grid-options}}" on-iron-localstorage-load-empty="initializeDefaultGridOptionValues">
+  </iron-localstorage>
+  <template>
+
+    <paper-material elevation="1">
+      <header>
+        <h2>Grid Options</h2>
+      </header>
+      <paper-input auto-validate bind-value="{{columns}}" char-counter error-message="Numbers only!" label="Columns" maxlength="4" pattern="[0-9]*" value="{{columns}}"></paper-input>
+      <paper-input auto-validate bind-value="{{gutterWidth}}" char-counter error-message="Numbers only!" label="Gutter Width (px)" maxlength="4" pattern="[0-9]*" value="{{gutterWidth}}"></paper-input>
+      <!-- <dl>
+        <dt>Viewport Width</dt>
+        <dd>{{viewport}}</dd>
+        <dt>Grid Width</dt>
+        <dd>{{grid}}</dd>
+      </dl> -->
+    </paper-material>
+  </template>
+  <script src="wednesday-grid-options.js"></script>
+</dom-module>
