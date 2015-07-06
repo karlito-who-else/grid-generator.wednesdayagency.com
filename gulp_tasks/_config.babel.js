@@ -87,12 +87,51 @@ config.files = {
   sass: [
     config.path.source.base + 'styles/base/_variables.scss',
     config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss',
-    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/_mixins.scss',
+    // config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/_mixins.scss',
+
+    // Utilities
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_hide-text.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_opacity.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_image.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_labels.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_reset-filter.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_resize.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_responsive-visibility.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_size.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_tab-focus.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_reset-text.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_text-emphasis.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_text-overflow.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_vendor-prefixes.scss',
+
+    // Components
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_alerts.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_buttons.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_panels.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_pagination.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_list-group.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_nav-divider.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_forms.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_progress-bar.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_table-row.scss',
+
+    // Skins
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_background-variant.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_border-radius.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_gradients.scss',
+
+    // Layout
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_clearfix.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_center-block.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_nav-vertical-align.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_grid-framework.scss',
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_grid.scss',
+
     // config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/_normalize.scss',
     config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/_scaffolding.scss',
     config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/_grid.scss',
     config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/_utilities.scss',
-    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities.scss'
+    config.path.bowerComponents + 'bootstrap-sass/assets/stylesheets/bootstrap/_responsive-utilities.scss'
   ],
   scripts: [
     // config.path.source.base + '**/!(*-min).js'
