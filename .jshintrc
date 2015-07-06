@@ -27,6 +27,7 @@
 		"jQuery": true,
 		"navigator": true,
 		"Polymer": true,
+		"Sass": true,
 		"window": true
 	}
 }
