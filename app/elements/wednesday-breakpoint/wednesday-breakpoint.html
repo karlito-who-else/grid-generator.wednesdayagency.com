@@ -4,20 +4,20 @@
   <link rel="import" href="/bower_components/paper-material/paper-material.html">
   <link rel="import" type="css" href="wednesday-breakpoint.css">
   <template>
-    <paper-material elevation="1">
+    <!-- <paper-material elevation="1"> -->
       <header>
         <paper-icon-button icon="clear" alt="clear" title="clear" on-tap="removeBreakpoint"></paper-icon-button>
-        <h2>Breakpoint <span id="breakpoint-number">{{index}}</span></h2>
+        <h3>Breakpoint <span id="breakpoint-number">{{index}}</span></h3>
       </header>
-      <paper-input auto-validate bind-value="{{viewport}}" char-counter error-message="Numbers only!" label="Viewport Width (px)" maxlength="4" pattern="[0-9]*" value="{{viewport}}"></paper-input>
-      <paper-input auto-validate bind-value="{{grid}}" char-counter error-message="Numbers only!" label="Grid Width (px)" maxlength="4" pattern="[0-9]*" value="{{grid}}"></paper-input>
+      <paper-input auto-validate bind-value="{{viewport}}" char-counter error-message="Numbers only!" label="Viewport Width (px)" maxlength="4" pattern="[0-9]*" value="{{viewport}}" on-change="logInput"></paper-input>
+      <paper-input auto-validate bind-value="{{grid}}" char-counter error-message="Numbers only!" label="Grid Width (px)" maxlength="4" pattern="[0-9]*" value="{{grid}}" on-change="logInput"></paper-input>
       <!-- <dl>
         <dt>Viewport Width</dt>
         <dd>{{viewport}}</dd>
         <dt>Grid Width</dt>
         <dd>{{grid}}</dd>
       </dl> -->
-    </paper-material>
+    <!-- </paper-material> -->
   </template>
   <script src="wednesday-breakpoint.js"></script>
 </dom-module>

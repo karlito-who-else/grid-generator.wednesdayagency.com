@@ -75,18 +75,4 @@
     }
   };
 
-  app.addMediaQueryInputFieldset = function() {
-    console.log('toggleLayoutWarningsVisibility global');
-  };
-
-  app.generateStyleElements = function() {
-    console.log('generateStyleElements global');
-    var breakPoints = document.querySelectorAll('input.breakpoint');
-    for (var i = 0; i < breakPoints.length; i++) {
-      var newStyle = document.querySelector('head').createElement('style');
-      newStyle.id = 'media-query-' + breakPoints[i].value;
-      document.querySelector('style').textContent += '@media screen and (min-width:' + breakPoints[i].value + 'px) { div { color: red; } }';
-    }
-  };
-
 })(document);

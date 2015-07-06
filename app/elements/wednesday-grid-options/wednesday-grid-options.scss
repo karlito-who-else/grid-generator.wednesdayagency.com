@@ -4,10 +4,60 @@
 :host {
   display: block;
   flex-wrap: wrap;
-  margin-left: 5rem;
-  margin-right: 5rem;
+  justify-content: center;
+  padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
+
+  h2 {
+    margin: 8px 0;
+  }
+
+  paper-icon-button {
+    height: 100%;
+    line-height: 1;
+    order: 1;
+  }
+
+}
+
+paper-input {
+    // max-width: 20rem;
+  // flex: 1;
+
+  @media (max-width: $screen-xs-max) {
+    --menu-container-display: none;
+    flex: 100%;
+    // width: auto;
+
+    // &:not(:first-of-type) {
+    //   margin-left: 1rem;
+    // }
+    //
+    // &:not(:last-of-type) {
+    //   margin-right: 1rem;
+    // }
+
+  }
+
+  @media (min-width: $screen-sm-min) {
+    // width: 50%;
+    flex: 1;
+
+    &:not(:first-of-type) {
+      margin-left: 1.5rem;
+    }
+
+    &:not(:last-of-type) {
+      margin-right: 1.5rem;
+    }
+
+  }
+
 }

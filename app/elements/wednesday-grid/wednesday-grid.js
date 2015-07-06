@@ -3,10 +3,27 @@
 (function() {
   Polymer({
     is: 'wednesday-grid',
+
     properties: {
+      columns: {
+        type: Number,
+        notify: true,
+        observer: 'observeColumns'
+      },
+      gutterWidth: {
+        type: Number,
+        notify: true,
+        observer: 'observeGutterWidth'
+      },
+      grid: {
+        type: String,
+        notify: true
+        // observer: 'observeGrid'
+      },
       container: {
         type: String,
-        value: ''
+        notify: true
+        // observer: 'observeContainer'
       }
     },
 
@@ -17,7 +34,7 @@
 
       this.bootstrapContainerTypes();
       this.bootstrapGridClass();
-      this.bootstrapSassJs();
+      // this.applyStyles();
     },
 
     bootstrapContainerTypes: function() {
@@ -42,7 +59,8 @@
       this.$.grid.classList.toggle('show-main-grid');
     },
 
-    bootstrapSassJs: function() {
+    applyStyles: function() {
+      console.log('applyStyles', this.columns, this.gutterWidth);
 
       function addStyles(compilationResult) {
         console.log('addStyles', compilationResult);
@@ -55,17 +73,42 @@
           dynamicStyle.innerHTML = '';
           dynamicStyle.appendChild(document.createTextNode(compilationResult.text));
         }
+
+        _this.$.main.classList.remove('hidden');
       }
 
       Sass.setWorkerUrl('/bower_components/sass.js/dist/sass.worker.js');
+
+      if (typeof this.columns === 'undefined') {
+        this.columns = 0;
+      }
+
+      if (typeof this.gutterWidth === 'undefined') {
+        this.gutterWidth = 0;
+      }
 
       var _this = this;
 
       var dynamicStyle = this.$.dynamic;
 
+      var columns = this.$.grid.querySelectorAll('.main-grid');
+
+      var maxColumns = (parseInt(this.columns) < columns.length) ? parseInt(this.columns) : columns.length;
+
+      this.$.main.classList.add('hidden');
+
+      for (var i = 0; i < maxColumns; i++) { // hide all columns with an index greater than the amount we have specified
+        columns[i].classList.remove('hidden');
+      }
+
+      for (var i = maxColumns; i < columns.length; i++) { // hide all columns with an index greater than the amount we have specified
+        columns[i].classList.add('hidden');
+      }
+
       var sass = new Sass();
 
-      var customScss = '#grid-container {background: red;}';
+      var customScss = '$grid-gutter-width: ' + this.gutterWidth.toString() + 'px !default; ' +
+      '$grid-columns: ' + this.columns.toString() + ' !default; ';
 
       var allScss;
 
@@ -77,17 +120,6 @@
           allScss = customScss.concat(baseScss);
 
           sass.compile(allScss, addStyles);
-
-          setTimeout(function() {
-            customScss = '$grid-gutter-width: ' + _this.gutterWidth.toString() + 'px !default; ' +
-            '$grid-columns: ' + _this.columns.toString() + ' !default; ' +
-            '#grid-container {background: orange;}';
-
-            allScss = customScss.concat(baseScss);
-
-            sass.compile(allScss, addStyles);
-          }, 5000);
-
         });
 
       });
@@ -132,6 +164,30 @@
       for (var i = 0; i < wednesdayCell.length; i++) {
         wednesdayCell[i].toggleLabelVisibility();
       }
+    },
+
+    observeColumns: function(newValue, oldValue) {
+      console.log('newValue', newValue);
+      console.log('oldValue', oldValue);
+      this.applyStyles();
+    },
+
+    observeGutterWidth: function(newValue, oldValue) {
+      console.log('newValue', newValue);
+      console.log('oldValue', oldValue);
+      this.applyStyles();
+    },
+
+    observeGrid: function(newValue, oldValue) {
+      console.log('newValue', newValue);
+      console.log('oldValue', oldValue);
+      this.applyStyles();
+    },
+
+    observeContainer: function(newValue, oldValue) {
+      console.log('newValue', newValue);
+      console.log('oldValue', oldValue);
+      // this.applyStyles();
     },
 
     renderToImage: function(event) {

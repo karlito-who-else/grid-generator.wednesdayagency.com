@@ -1,4 +1,5 @@
 <dom-module id="wednesday-grid">
+  <link rel="import" href="/bower_components/paper-input/paper-input.html">
   <link rel="import" href="/bower_components/iron-icons/image-icons.html">
   <link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
   <link rel="import" href="/bower_components/paper-toolbar/paper-toolbar.html">
@@ -6,9 +7,11 @@
   <link rel="import" type="css" href="wednesday-grid.css">
   <template>
     <style id="dynamic">
+      /*
       #grid-container {
         background: green;
       }
+      */
     </style>
     <header class="container">
       <paper-toolbar>
@@ -29,7 +32,17 @@
         </paper-button> -->
       </paper-toolbar>
     </header>
-    <main id="main">
+    <paper-input auto-validate bind-value="{{columns}}" char-counter error-message="Numbers only!" label="Columns" maxlength="2" pattern="[0-9]*" value="{{columns}}" on-change="logInput"></paper-input>
+    <paper-input auto-validate bind-value="{{gutterWidth}}" char-counter error-message="Numbers only!" label="Gutter Width (px)" maxlength="2" pattern="[0-9]*" value="{{gutterWidth}}" on-change="logInput"></paper-input>
+    <!--
+    <dl>
+      <dt>Columns</dt>
+      <dd>{{columns}}</dd>
+      <dt>Gutter Width</dt>
+      <dd>{{gutterWidth}}</dd>
+    </dl>
+     -->
+    <main id="main" class="hidden">
       <section id="example">
         <div class="container">
           <content></content>

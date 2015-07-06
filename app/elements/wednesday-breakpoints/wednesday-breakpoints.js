@@ -5,8 +5,21 @@
     is: 'wednesday-breakpoints',
 
     // properties: {
+    //   columns: {
+    //     type: Number,
+    //     notify: true
+    //   },
+    //   gutterWidth: {
+    //     type: Number,
+    //     notify: true
+    //   },
+    //   grid: {
+    //     type: Number,
+    //     notify: true
+    //   },
     //   breakpoints: {
-    //     type: Array
+    //     type: Array,
+    //     notify: true
     //   }
     // },
 
@@ -19,28 +32,28 @@
     },
 
     initializeDefaultBreakpoints: function() {
-      this.gridGutterWidth = 30;
+      this.gutterWidth = 30;
 
       this.breakpoints = [
         {
           viewport: 320,
-          grid: (290 + this.gridGutterWidth)
+          grid: (290 + this.gutterWidth)
         },
         {
           viewport: 768,
-          grid: (720 + this.gridGutterWidth)
+          grid: (720 + this.gutterWidth)
         },
         {
           viewport: 992,
-          grid: (940 + this.gridGutterWidth)
+          grid: (940 + this.gutterWidth)
         },
         {
           viewport: 1200,
-          grid: (1140 + this.gridGutterWidth)
+          grid: (1140 + this.gutterWidth)
         },
         {
           viewport: 1366,
-          grid: (1336 + this.gridGutterWidth)
+          grid: (1336 + this.gutterWidth)
         }
       ];
     },
@@ -57,7 +70,7 @@
 
       this.breakpoints.push({
         viewport: 1440,
-        grid: (1380 + this.gridGutterWidth)
+        grid: (1380 + this.gutterWidth)
       });
 
       console.log('this.breakpoints', this.breakpoints);

@@ -126,9 +126,9 @@
 
             <section data-route="overview">
 
-              <wednesday-grid-options></wednesday-grid-options>
+              <wednesday-grid-options columns="{{columns}}" gutter-width="{{gutterWidth}}"></wednesday-grid-options>
 
-              <wednesday-breakpoints></wednesday-breakpoints>
+              <wednesday-breakpoints breakpoints="{{breakpoints}}"></wednesday-breakpoints>
 
               <!-- <h2 class="paper-font-display2">Overview</h2> -->
 
@@ -155,7 +155,7 @@
             <section data-route="fixed">
               <h2 class="paper-font-display2">Fixed</h2>
               <p><a href="/fixed"><strong>Fixed</strong></a> websites have a set width and resizing the browser or viewing it on different devices won’t affect on the way the website looks.</p>
-              <wednesday-grid container="fixed" layout="single">
+              <wednesday-grid container="fixed" layout="single" columns="{{columns}}" gutter-width="{{gutterWidth}}">
                 <div class="row">
                   <wednesday-cell class="col-xs-12"></wednesday-cell>
                 </div>
@@ -242,7 +242,7 @@
             <section data-route="fluid">
               <h2 class="paper-font-display2">Fluid</h2>
               <p><a href="/fluid"><strong>Fluid</strong></a> websites are built using percentages for widths. As a result, columns are relative to one another and the browser allowing it to scale up and down fluidly.</p>
-              <wednesday-grid container="fluid" layout="single">
+              <wednesday-grid container="fluid" layout="single" columns="{{columns}}" gutter-width="{{gutterWidth}}">
                 <div class="row">
                   <wednesday-cell class="col-xs-12"></wednesday-cell>
                 </div>
@@ -329,7 +329,7 @@
             <section data-route="adaptive">
               <h2 class="paper-font-display2">Adaptive</h2>
               <p><a href="/adaptive"><strong>Adaptive</strong></a> websites introduce media queries to target specific device sizes, like smaller monitors, tablets, and mobile.</p>
-              <wednesday-grid container="adaptive" layout="multiple">
+              <wednesday-grid container="adaptive" layout="multiple" columns="{{columns}}" gutter-width="{{gutterWidth}}">
                 <div class="row">
                   <wednesday-cell class="col-xs-12"></wednesday-cell>
                 </div>
@@ -357,7 +357,7 @@
             <section data-route="responsive">
               <h2 class="paper-font-display2">Responsive</h2>
               <p><a href="/responsive"><strong>Responsive</strong></a> websites are built on a fluid grid and use media queries to control the design and its content as it scales down or up with the browser or device.</p>
-              <wednesday-grid container="responsive" layout="multiple">
+              <wednesday-grid container="responsive" layout="multiple" columns="{{columns}}" gutter-width="{{gutterWidth}}">
                 <div class="row">
                   <wednesday-cell class="col-xs-12"></wednesday-cell>
                 </div>

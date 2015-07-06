@@ -4,70 +4,83 @@
 :host {
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
-paper-material {
-  background-color: var(--secondary-background-color);
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 400px;
-  width: calc(98.66% - 16px);
-
-  @media (max-width: $screen-xs-max) {
-    --menu-container-display: none;
-    margin-bottom: 1rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 1rem;
-    padding-bottom: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 1rem;
-  }
-
-  @media (min-width: $screen-sm-min) {
-    margin-bottom: 1.5rem;
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
-    margin-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    padding-top: 1.5rem;
-  }
-
-}
-
+// paper-material {
+//   background-color: var(--secondary-background-color);
+//   display: flex;
+//   flex-wrap: wrap;
+//   max-width: 400px;
+//   width: calc(98.66% - 16px);
+//
+//   @media (max-width: $screen-xs-max) {
+//     --menu-container-display: none;
+//     margin-bottom: 1rem;
+//     margin-left: 1rem;
+//     margin-right: 1rem;
+//     margin-top: 1rem;
+//     padding-bottom: 1rem;
+//     padding-left: 1rem;
+//     padding-right: 1rem;
+//     padding-top: 1rem;
+//   }
+//
+//   @media (min-width: $screen-sm-min) {
+//     margin-bottom: 1.5rem;
+//     margin-left: 1.5rem;
+//     margin-right: 1.5rem;
+//     margin-top: 1.5rem;
+//     padding-bottom: 1.5rem;
+//     padding-left: 1.5rem;
+//     padding-right: 1.5rem;
+//     padding-top: 1.5rem;
+//   }
+//
+// }
+//
 header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
 
+  h2 {
+    margin: 8px 0;
+  }
+
   paper-icon-button {
-    left: -4px;
-    top: -4px;
+    height: 100%;
+    line-height: 1;
+    order: 1;
+    right: -8px;
   }
 
 }
 
 paper-input {
-  flex: 1;
+  // flex: 1;
+  // max-width: 20rem;
 
   @media (max-width: $screen-xs-max) {
     --menu-container-display: none;
-    width: auto;
+    // width: auto;
+    flex: 100%;
 
-    &:not(:first-of-type) {
-      margin-left: 1rem;
-    }
-
-    &:not(:last-of-type) {
-      margin-right: 1rem;
-    }
+    // &:not(:first-of-type) {
+    //   margin-left: 1rem;
+    // }
+    //
+    // &:not(:last-of-type) {
+    //   margin-right: 1rem;
+    // }
 
   }
 
   @media (min-width: $screen-sm-min) {
-    width: 50%;
+    // width: 50%;
+    flex: 1;
 
     &:not(:first-of-type) {
       margin-left: 1.5rem;
