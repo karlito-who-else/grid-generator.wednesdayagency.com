@@ -1,5 +1,6 @@
 'use strict';
 
+import babel from 'gulp-babel';
 // import concat from 'gulp-concat';
 import debug from 'gulp-debug';
 import gulp from 'gulp';
@@ -25,10 +26,11 @@ gulp.task('scripts', () => {
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'))
     // .pipe(gulpif(!browserSync.active, jshint.reporter('fail')))
+    .pipe(sourcemaps.init())
     .pipe(jscs({
       fix: true
     }))
-    .pipe(sourcemaps.init())
+    .pipe(babel())
     // .pipe(concat('app-min.js'))
     // .pipe(modernizr())
     .pipe(uglify())
