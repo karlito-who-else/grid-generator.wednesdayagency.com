@@ -1,8 +1,10 @@
 <dom-module id="wednesday-grid">
-  <link rel="import" href="/bower_components/paper-input/paper-input.html">
+  <link rel="import" href="/bower_components/iron-icons/editor-icons.html">
   <link rel="import" href="/bower_components/iron-icons/image-icons.html">
   <link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="/bower_components/paper-input/paper-input.html">
   <link rel="import" href="/bower_components/paper-toolbar/paper-toolbar.html">
+  <link rel="import" href="/bower_components/paper-spinner/paper-spinner.html">
   <link rel="import" href="../wednesday-cell/wednesday-cell.html">
   <link rel="import" type="css" href="wednesday-grid.css">
   <template>
@@ -16,8 +18,8 @@
     <header class="container">
       <paper-toolbar>
         <paper-icon-button icon="visibility" on-tap="toggleGridVisibility"></paper-icon-button>
-        <paper-icon-button icon="view-column" on-tap="toggleGridColumnAmount"></paper-icon-button>
-        <paper-icon-button icon="border-outside" on-tap="toggleOutlineVisibility"></paper-icon-button>
+        <paper-icon-button icon="view-column" on-tap="toggleNestedGridVisibility"></paper-icon-button>
+        <paper-icon-button icon="editor:border-outer" on-tap="toggleOutlineVisibility"></paper-icon-button>
         <paper-icon-button icon="view-module" on-tap="toggleExampleContentVisibility"></paper-icon-button>
         <paper-icon-button icon="label" on-tap="toggleLabelVisibility"></paper-icon-button>
         <paper-icon-button icon="warning" on-tap="toggleLayoutWarningsVisibility"></paper-icon-button>
@@ -31,9 +33,9 @@
           <iron-icon src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg"></iron-icon>
         </paper-button> -->
       </paper-toolbar>
+      <paper-input auto-validate bind-value="{{columns}}" char-counter error-message="Numbers only!" label="Columns" maxlength="2" pattern="[0-9]*" value="{{columns}}" on-change="logInput"></paper-input>
+      <paper-input auto-validate bind-value="{{gutterWidth}}" char-counter error-message="Numbers only!" label="Gutter Width (px)" maxlength="2" pattern="[0-9]*" value="{{gutterWidth}}" on-change="logInput"></paper-input>
     </header>
-    <paper-input auto-validate bind-value="{{columns}}" char-counter error-message="Numbers only!" label="Columns" maxlength="2" pattern="[0-9]*" value="{{columns}}" on-change="logInput"></paper-input>
-    <paper-input auto-validate bind-value="{{gutterWidth}}" char-counter error-message="Numbers only!" label="Gutter Width (px)" maxlength="2" pattern="[0-9]*" value="{{gutterWidth}}" on-change="logInput"></paper-input>
     <!--
     <dl>
       <dt>Columns</dt>
@@ -42,15 +44,19 @@
       <dd>{{gutterWidth}}</dd>
     </dl>
      -->
+    <paper-spinner alt="Loading contacts list" active></paper-spinner>
     <main id="main" class="hidden">
       <section id="example">
         <div class="container">
           <content></content>
         </div>
       </section>
-      <section id="grid">
+      <section id="grid" class="show-outline">
         <div class="container" id="grid-container">
-          <div class="row">
+          <div class="row" id="grid-container-row">
+            <!--  empty #grid-container, populate amount of columns via template tag-->
+            <!--  empty #example, populate amount of row and row widths via template tag-->
+<!--
             <div class="col-xs-2 col-sm-1 main-grid">
               <div>
                 <div class="row">
@@ -195,11 +201,172 @@
                 </div>
               </div>
             </div>
+            <div class="col-xs-2 col-sm-1 main-grid">
+              <div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-2 col-sm-1 main-grid">
+              <div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-2 col-sm-1 main-grid">
+              <div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-2 col-sm-1 main-grid">
+              <div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-2 col-sm-1 main-grid">
+              <div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-2 col-sm-1 main-grid">
+              <div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="hidden-xs col-xs-2 col-sm-1 main-grid">
+              <div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="hidden-xs col-xs-2 col-sm-1 main-grid">
+              <div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="hidden-xs col-xs-2 col-sm-1 main-grid">
+              <div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="hidden-xs col-xs-2 col-sm-1 main-grid">
+              <div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="hidden-xs col-xs-2 col-sm-1 main-grid">
+              <div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="hidden-xs col-xs-2 col-sm-1 main-grid">
+              <div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 nested-grid">
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
           </div>
           <h3 id="title"></h3>
         </div>
       </section>
     </main>
+    <code></code>
+  </template>
+
+  <template id="column">
+    <div class="col-xs-2 col-sm-1 main-grid">
+      <div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 nested-grid">
+            <div></div>
+          </div>
+          <div class="col-xs-12 col-sm-6 nested-grid">
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </template>
 
   <script src="/bower_components/html2canvas/build/html2canvas.js"></script>

@@ -29,8 +29,9 @@
 
     ready: function() {
       this.columns = 12;
-      this.grid = 'main';
+      this.nestedGridVisibility = 'main';
       this.gutterWidth = 30;
+      this.outlineVisibility = true;
 
       this.bootstrapContainerTypes();
       this.bootstrapGridClass();
@@ -60,21 +61,29 @@
     },
 
     applyStyles: function() {
-      console.log('applyStyles', this.columns, this.gutterWidth);
+      let _this = this;
+      let dynamicStyle = this.$.dynamic;
+      let spinner = Polymer.dom(this.root).querySelector('paper-spinner');
+
+      // console.log('applyStyles', this.columns, this.gutterWidth);
 
       function addStyles(compilationResult) {
-        console.log('addStyles', compilationResult);
+        // console.log('addStyles', compilationResult);
 
         if (dynamicStyle.styleSheet) {
-          console.log('Adding style via element.styleSheet');
+          // console.log('Adding style via element.styleSheet');
           dynamicStyle.styleSheet.cssText = compilationResult.text;
         } else {
-          console.log('Adding style via element.appendChild');
+          // console.log('Adding style via element.appendChild');
           dynamicStyle.innerHTML = '';
           dynamicStyle.appendChild(document.createTextNode(compilationResult.text));
         }
 
-        _this.$.main.classList.remove('hidden');
+        setTimeout(function() {
+          _this.$.main.classList.remove('hidden');
+          spinner.active = false;
+        }, 3000);
+
       }
 
       Sass.setWorkerUrl('/bower_components/sass.js/dist/sass.worker.js');
@@ -87,27 +96,54 @@
         this.gutterWidth = 0;
       }
 
-      var _this = this;
+      let codePreview = Polymer.dom(this.root).querySelector('code');
 
-      var dynamicStyle = this.$.dynamic;
+      // console.log('spinner', spinner);
 
-      var columns = this.$.grid.querySelectorAll('.main-grid');
+      let gridContainerRow = Polymer.dom(this.root).querySelector('#grid-container-row');
+      // console.log('gridContainerRow', gridContainerRow);
 
-      var maxColumns = (parseInt(this.columns) < columns.length) ? parseInt(this.columns) : columns.length;
+      // const templateColumn = Polymer.dom(this.root).querySelector('template#column').content;
+      const templateColumn = document.querySelector('template#column').content;
+
+      console.log('templateColumn', templateColumn);
+
+      // let columns = this.$.grid.querySelectorAll('.main-grid');
+
+      // let maxColumns = (parseInt(this.columns) < columns.length) ? parseInt(this.columns) : columns.length;
+
+      let fragment = document.createDocumentFragment();
 
       this.$.main.classList.add('hidden');
+      spinner.active = true;
 
-      for (var i = 0; i < maxColumns; i++) { // hide all columns with an index greater than the amount we have specified
-        columns[i].classList.remove('hidden');
+      gridContainerRow.innerHTML = '';
+
+      for (let i = 0; i < this.columns; i++) { // hide all columns with an index greater than the amount we have specified
+        // columns[i].classList.remove('hidden');
+
+        let clone = document.importNode(templateColumn, true);
+
+        console.log('clone', clone);
+
+        fragment.appendChild(clone);
+
+        console.log('fragment', fragment);
+
+        if (i + 1 === this.columns) {
+          console.log('this.columns', this.columns);
+          gridContainerRow.appendChild(fragment);
+          console.log('gridContainerRow', gridContainerRow);
+        }
       }
 
-      for (var i = maxColumns; i < columns.length; i++) { // hide all columns with an index greater than the amount we have specified
-        columns[i].classList.add('hidden');
-      }
+      // for (var i = maxColumns; i < columns.length; i++) { // hide all columns with an index greater than the amount we have specified
+      //   columns[i].classList.add('hidden');
+      // }
 
       var sass = new Sass();
 
-      var customScss = '$grid-gutter-width: ' + this.gutterWidth.toString() + 'px !default; ' +
+      var customScss = '$grid-gutter-width: ' + this.gutterWidth.toString() + 'px !default;\n' +
       '$grid-columns: ' + this.columns.toString() + ' !default; ';
 
       var allScss;
@@ -120,6 +156,8 @@
           allScss = customScss.concat(baseScss);
 
           sass.compile(allScss, addStyles);
+
+          codePreview.innerHTML = customScss;
         });
 
       });
@@ -131,14 +169,35 @@
       this.$.example.style.display = (this.$.example.style.display !== 'none' ? 'none' : '');
     },
 
-    toggleGridColumnAmount: function() {
-      console.log('toggleGridColumnAmount');
-      this.grid = (this.grid !== 'nested' ? 'nested' : 'main');
+    toggleNestedGridVisibility: function() {
+      console.log('toggleNestedGridVisibility');
+      this.nestedGridVisibility = (this.outlineVisibility !== true ? true : false);
 
-      this.$.grid.classList.remove('show-main-grid');
-      this.$.grid.classList.remove('show-nested-grid');
+      console.log('toggleOutlineVisibility', this.outlineVisibility, typeof this.outlineVisibility);
 
-      this.$.grid.classList.add('show-' + this.grid + '-columns');
+      if (this.nestedGridVisibility === true) {
+        console.log('add show-nested-grid class');
+        this.$.grid.classList.add('show-nested-grid');
+      } else {
+        console.log('remove show-nested-grid class');
+        this.$.grid.classList.remove('show-nested-grid');
+      }
+
+    },
+
+    toggleOutlineVisibility: function() {
+      this.outlineVisibility = (this.outlineVisibility !== true ? true : false);
+
+      console.log('toggleOutlineVisibility', this.outlineVisibility, typeof this.outlineVisibility);
+
+      if (this.outlineVisibility === true) {
+        console.log('add show-outline class');
+        this.$.grid.classList.add('show-outline');
+      } else {
+        console.log('remove show-outline class');
+        this.$.grid.classList.remove('show-outline');
+      }
+
     },
 
     toggleGridVisibility: function() {
@@ -169,7 +228,10 @@
     observeColumns: function(newValue, oldValue) {
       console.log('newValue', newValue);
       console.log('oldValue', oldValue);
-      this.applyStyles();
+      this.cancelDebouncer('applyStyles');
+      this.debounce('applyStyles', function() {
+        this.applyStyles();
+      }, 500);
     },
 
     observeGutterWidth: function(newValue, oldValue) {
@@ -205,7 +267,7 @@
 
       for (var i = 0; i < breakpoints.length; i++) {
         window.open(
-          '/screenshot.html?columns=' + _this.grid + '&container-type=' + containerType + '&width=' + breakpoints[i].viewport,
+          '/screenshot.html?columns=' + _this.nestedGridVisibility + '&container-type=' + containerType + '&width=' + breakpoints[i].viewport,
           'grid - ' + breakpoints[i].viewport + 'px',
           'titlebar=grid - ' + breakpoints[i].viewport + 'px, ' +
           'height=500px,' +
