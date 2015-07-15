@@ -88,7 +88,7 @@
     "jshint-stylish": "^2.0.0",
     "npm-check-updates": "^1.5.1",
     "opn": "^2.0.0",
-    "phantomjs2": "^2.0.0",
+    "phantomjs2": "^1.9.12",
     "psi": "^1.0.6",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.1",
