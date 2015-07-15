@@ -17,29 +17,44 @@
       },
       grid: {
         type: String,
-        notify: true
-        // observer: 'observeGrid'
+        notify: true,
+        observer: 'observeGrid'
       },
       container: {
         type: String,
-        notify: true
-        // observer: 'observeContainer'
+        notify: true,
+        observer: 'observeContainer'
       }
     },
 
     ready: function() {
+      console.log('ready');
+
       this.columns = 12;
       this.nestedGridVisibility = 'main';
       this.gutterWidth = 30;
       this.outlineVisibility = true;
 
+      if (this.bootstrapVariablesRun !== true) {
+        this.bootstrapVariables();
+      }
       this.bootstrapContainerTypes();
       this.bootstrapGridClass();
-      // this.applyStyles();
+      this.applyStyles();
+    },
+
+    bootstrapVariables: function() {
+      console.log('bootstrapVariables');
+
+      this.codePreview = Polymer.dom(this.root).querySelector('code');
+      this.gridContainerRow = Polymer.dom(this.root).querySelector('#grid-container .row');
+      this.spinner = Polymer.dom(this.root).querySelector('paper-spinner');
+      this.bootstrapVariablesRun = true;
     },
 
     bootstrapContainerTypes: function() {
       console.log('bootstrapContainerTypes');
+
       var containers = Polymer.dom(this.root).querySelectorAll('.container');
 
       for (var i = 0; i < containers.length; i++) {
@@ -57,18 +72,129 @@
 
     bootstrapGridClass: function() {
       console.log('bootstrapGridClass');
-      this.$.grid.classList.toggle('show-main-grid');
+
+      // this.$.grid.classList.toggle('show-main-grid');
     },
 
     applyStyles: function() {
-      let _this = this;
-      let dynamicStyle = this.$.dynamic;
-      let spinner = Polymer.dom(this.root).querySelector('paper-spinner');
+      console.log('applyStyles');
 
-      // console.log('applyStyles', this.columns, this.gutterWidth);
+      if (typeof this.columns === 'undefined') {
+        this.columns = 0;
+      }
+
+      if (typeof this.gutterWidth === 'undefined') {
+        this.gutterWidth = 0;
+      }
+
+      this.$.main.classList.add('hidden');
+
+      this.spinner.active = true;
+
+      this.generateColumns();
+      this.renderSass();
+    },
+
+    generateColumns: function() {
+      let fragment = document.createDocumentFragment();
+
+      this.gridContainerRow.innerHTML = '';
+
+      for (let i = 0; i < this.columns; i++) {
+        let column = document.createElement('wednesday-column');
+        column.classList.add('col-xs-2', 'col-sm-1', 'show-outline');
+
+        fragment.appendChild(column);
+
+        if (i + 1 === this.columns) {
+          this.gridContainerRow.appendChild(fragment);
+        }
+      }
+    },
+
+    observeColumns: function(newValue, oldValue) {
+      console.log('observeColumns', 'newValue', newValue, 'oldValue', oldValue);
+
+      if (this.bootstrapVariablesRun !== true) {
+        this.bootstrapVariables();
+      }
+
+      this.cancelDebouncer('applyStyles');
+      this.debounce('applyStyles', function() {
+        this.applyStyles();
+      }, 500);
+    },
+
+    observeGutterWidth: function(newValue, oldValue) {
+      console.log('observeGutterWidth', 'newValue', newValue, 'oldValue', oldValue);
+
+      if (this.bootstrapVariablesRun !== true) {
+        this.bootstrapVariables();
+      }
+
+      this.cancelDebouncer('applyStyles');
+      this.debounce('applyStyles', function() {
+        this.applyStyles();
+      }, 500);
+    },
+
+    observeGrid: function(newValue, oldValue) {
+      console.log('observeGrid', 'newValue', newValue, 'oldValue', oldValue);
+
+      if (this.bootstrapVariablesRun !== true) {
+        this.bootstrapVariables();
+      }
+
+      this.cancelDebouncer('applyStyles');
+      this.debounce('applyStyles', function() {
+        this.applyStyles();
+      }, 500);
+    },
+
+    observeContainer: function(newValue, oldValue) {
+      console.log('observeContainer', 'newValue', newValue, 'oldValue', oldValue);
+
+      if (this.bootstrapVariablesRun !== true) {
+        this.bootstrapVariables();
+      }
+
+      this.cancelDebouncer('applyStyles');
+      this.debounce('applyStyles', function() {
+        this.applyStyles();
+      }, 500);
+    },
+
+    renderToImage: function(event) {
+      console.log('renderToImage');
+      var _this = this;
+      var breakpoints = document.querySelector('wednesday-breakpoints').breakpoints;
+      var classList = event.target.closest('wednesday-grid').querySelector('#grid-container').classList;
+      var containerType = 'container';
+
+      if (classList.contains('container')) {
+        containerType = 'container';
+      } else if (classList.contains('container-fluid')) {
+        containerType = 'container-fluid';
+      }
+
+      for (var i = 0; i < breakpoints.length; i++) {
+        window.open(
+          '/screenshot.html?columns=' + _this.columns + '&container-type=' + containerType + '&nested=' + _this.nestedGridVisibility + '&width=' + breakpoints[i].viewport,
+          'grid - ' + breakpoints[i].viewport + 'px',
+          'titlebar=grid - ' + breakpoints[i].viewport + 'px, ' +
+          'height=900px,' +
+          'width=' + breakpoints[i].viewport + 'px'
+        );
+      }
+
+    },
+
+    renderSass: function() {
+      let _this = this;
 
       function addStyles(compilationResult) {
         // console.log('addStyles', compilationResult);
+        let dynamicStyle = _this.$.dynamic;
 
         if (dynamicStyle.styleSheet) {
           // console.log('Adding style via element.styleSheet');
@@ -81,61 +207,12 @@
 
         setTimeout(function() {
           _this.$.main.classList.remove('hidden');
-          spinner.active = false;
+          _this.spinner.active = false;
         }, 3000);
 
       }
 
       Sass.setWorkerUrl('/bower_components/sass.js/dist/sass.worker.js');
-
-      if (typeof this.columns === 'undefined') {
-        this.columns = 0;
-      }
-
-      if (typeof this.gutterWidth === 'undefined') {
-        this.gutterWidth = 0;
-      }
-
-      let codePreview = Polymer.dom(this.root).querySelector('code');
-
-      // console.log('spinner', spinner);
-
-      let gridContainerRow = Polymer.dom(this.root).querySelector('#grid .container .row');
-      // console.log('gridContainerRow', gridContainerRow);
-
-      // const wednesdayColumn = Polymer.dom(this.root).querySelector('template#column').content;
-      // const wednesdayColumn = document.querySelector('template#column').content;
-
-      // console.log('wednesdayColumn', wednesdayColumn);
-
-      // let columns = this.$.grid.querySelectorAll('.main-grid');
-
-      // let maxColumns = (parseInt(this.columns) < columns.length) ? parseInt(this.columns) : columns.length;
-
-      let fragment = document.createDocumentFragment();
-
-      this.$.main.classList.add('hidden');
-      spinner.active = true;
-
-      gridContainerRow.innerHTML = '';
-
-      for (let i = 0; i < this.columns; i++) { // hide all columns with an index greater than the amount we have specified
-        let column = document.createElement('wednesday-column');
-
-        fragment.appendChild(column);
-        console.log('fragment', fragment);
-
-        console.log('this.columns', this.columns, 'i', i);
-
-        if (i + 1 === this.columns) {
-          gridContainerRow.appendChild(fragment);
-          console.log('gridContainerRow', gridContainerRow);
-        }
-      }
-
-      // for (var i = maxColumns; i < columns.length; i++) { // hide all columns with an index greater than the amount we have specified
-      //   columns[i].classList.add('hidden');
-      // }
 
       var sass = new Sass();
 
@@ -153,124 +230,79 @@
 
           sass.compile(allScss, addStyles);
 
-          codePreview.innerHTML = customScss;
+          _this.codePreview.innerHTML = customScss;
         });
 
       });
+    },
 
+    toggleCodeVisibility: function() {
+      console.log('toggleCodeVisibility');
+
+      this.codePreview.style.display = (this.codePreview.style.display !== 'none' ? 'none' : '');
     },
 
     toggleExampleContentVisibility: function() {
       console.log('toggleExampleContentVisibility');
+
       this.$.example.style.display = (this.$.example.style.display !== 'none' ? 'none' : '');
-    },
-
-    toggleNestedGridVisibility: function() {
-      console.log('toggleNestedGridVisibility');
-      this.nestedGridVisibility = (this.outlineVisibility !== true ? true : false);
-
-      console.log('toggleOutlineVisibility', this.outlineVisibility, typeof this.outlineVisibility);
-
-      if (this.nestedGridVisibility === true) {
-        console.log('add show-nested-grid class');
-        this.$.grid.classList.add('show-nested-grid');
-      } else {
-        console.log('remove show-nested-grid class');
-        this.$.grid.classList.remove('show-nested-grid');
-      }
-
-    },
-
-    toggleOutlineVisibility: function() {
-      this.outlineVisibility = (this.outlineVisibility !== true ? true : false);
-
-      console.log('toggleOutlineVisibility', this.outlineVisibility, typeof this.outlineVisibility);
-
-      if (this.outlineVisibility === true) {
-        console.log('add show-outline class');
-        this.$.grid.classList.add('show-outline');
-      } else {
-        console.log('remove show-outline class');
-        this.$.grid.classList.remove('show-outline');
-      }
-
     },
 
     toggleGridVisibility: function() {
       console.log('toggleGridVisibility');
-      this.$.grid.style.display = (this.$.grid.style.display !== 'none' ? 'none' : '');
-    },
 
-    toggleLayoutWarningsVisibility: function() {
-      console.log('toggleLayoutWarningsVisibility');
-      // var wednesdayCell = Polymer.dom(this.root).querySelectorAll('wednesday-cell');
-      var wednesdayCell = Polymer.dom(this.$.content).querySelectorAll('wednesday-cell');
-      console.log('toggleLabelVisibility', this, this.$.content, wednesdayCell);
-      for (var i = 0; i < wednesdayCell.length; i++) {
-        wednesdayCell[i].toggleLayoutWarningsVisibility();
-      }
+      this.gridVisibility = (this.gridVisibility !== true ? true : false);
+
+      this.$.grid.style.display = (this.$.grid.style.display !== 'none' ? 'none' : '');
     },
 
     toggleLabelVisibility: function() {
       console.log('toggleLabelVisibility');
-      // var wednesdayCell = Polymer.dom(this.root).querySelectorAll('wednesday-cell');
+
+      this.labelVisibility = (this.labelVisibility !== true ? true : false);
+
       var wednesdayCell = Polymer.dom(this.$.content).querySelectorAll('wednesday-cell');
-      console.log('toggleLabelVisibility', this, this.$.content, wednesdayCell);
+
       for (var i = 0; i < wednesdayCell.length; i++) {
         wednesdayCell[i].toggleLabelVisibility();
       }
     },
 
-    observeColumns: function(newValue, oldValue) {
-      console.log('newValue', newValue);
-      console.log('oldValue', oldValue);
-      this.cancelDebouncer('applyStyles');
-      this.debounce('applyStyles', function() {
-        this.applyStyles();
-      }, 500);
-    },
+    toggleLayoutWarningsVisibility: function() {
+      console.log('toggleLayoutWarningsVisibility');
 
-    observeGutterWidth: function(newValue, oldValue) {
-      console.log('newValue', newValue);
-      console.log('oldValue', oldValue);
-      this.applyStyles();
-    },
+      this.layoutWarningsVisibility = (this.layoutWarningsVisibility !== true ? true : false);
 
-    observeGrid: function(newValue, oldValue) {
-      console.log('newValue', newValue);
-      console.log('oldValue', oldValue);
-      this.applyStyles();
-    },
+      var wednesdayCell = Polymer.dom(this.$.content).querySelectorAll('wednesday-cell');
 
-    observeContainer: function(newValue, oldValue) {
-      console.log('newValue', newValue);
-      console.log('oldValue', oldValue);
-      // this.applyStyles();
-    },
-
-    renderToImage: function(event) {
-      console.log('renderToImage');
-      var _this = this;
-      var breakpoints = document.querySelector('wednesday-breakpoints').breakpoints;
-      var classList = event.target.closest('wednesday-grid').querySelector('#grid .container').classList;
-      var containerType = 'container';
-
-      if (classList.contains('container')) {
-        containerType = 'container';
-      } else if (classList.contains('container-fluid')) {
-        containerType = 'container-fluid';
+      for (var i = 0; i < wednesdayCell.length; i++) {
+        wednesdayCell[i].toggleLayoutWarningsVisibility();
       }
+    },
 
-      for (var i = 0; i < breakpoints.length; i++) {
-        window.open(
-          '/screenshot.html?columns=' + _this.nestedGridVisibility + '&container-type=' + containerType + '&width=' + breakpoints[i].viewport,
-          'grid - ' + breakpoints[i].viewport + 'px',
-          'titlebar=grid - ' + breakpoints[i].viewport + 'px, ' +
-          'height=500px,' +
-          'width=' + breakpoints[i].viewport + 'px'
-        );
+    toggleNestedGridVisibility: function() {
+      console.log('toggleNestedGridVisibility');
+
+      this.nestedGridVisibility = (this.nestedGridVisibility !== true ? true : false);
+
+      var wednesdayColumn = Polymer.dom(this.$.grid).querySelectorAll('wednesday-column');
+
+      for (var i = 0; i < wednesdayColumn.length; i++) {
+        wednesdayColumn[i].toggleNestedGridVisibility();
       }
+    },
 
+    toggleOutlineVisibility: function() {
+      console.log('toggleOutlineVisibility');
+
+      this.outlineVisibility = (this.outlineVisibility !== true ? true : false);
+
+      var wednesdayColumn = Polymer.dom(this.$.grid).querySelectorAll('wednesday-column');
+
+      for (var i = 0; i < wednesdayColumn.length; i++) {
+        wednesdayColumn[i].toggleOutlineVisibility();
+      }
     }
+
   });
 })();

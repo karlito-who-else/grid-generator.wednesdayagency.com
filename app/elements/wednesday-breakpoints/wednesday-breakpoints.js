@@ -53,7 +53,11 @@
         },
         {
           viewport: 1366,
-          grid: (1336 + this.gutterWidth)
+          grid: (1306 + this.gutterWidth)
+        },
+        {
+          viewport: 1920,
+          grid: (1860 + this.gutterWidth)
         }
       ];
     },

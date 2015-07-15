@@ -61,6 +61,7 @@ main {
   width: 100%;
 }
 
+main,
 section {
   min-height: 40rem;
 }
@@ -81,67 +82,6 @@ section#grid {
 
   div {
     height: 100%;
-  }
-
-  .main-grid,
-  .nested-grid {
-    padding-bottom: 15px;
-    padding-top: 15px;
-  }
-
-  &.show-outline {
-
-    .main-grid {
-      outline: 1px solid rgba(0, 155, 155, 0.85);
-    }
-
-  }
-
-  &:not(.show-nested-grid) {
-
-    .main-grid {
-      // outline: 1px solid rgba(0, 155, 155, 0.85);
-
-      > div {
-        background-color: rgba(0, 155, 155, 0.25);
-
-        > div {
-          display: none;
-        }
-
-      }
-
-    }
-
-  }
-
-  &.show-nested-grid {
-
-    .main-grid {
-
-      > div {
-
-        @media (max-width: $screen-xs-max) {
-
-          > div {
-            display: none;
-          }
-
-        }
-
-      }
-
-    }
-
-    .nested-grid {
-      // outline: 1px solid rgba(0, 155, 155, 0.85);
-
-      > div {
-        background-color: rgba(0, 155, 155, 0.25);
-      }
-
-    }
-
   }
 
 }

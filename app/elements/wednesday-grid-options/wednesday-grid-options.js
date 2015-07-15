@@ -28,30 +28,6 @@
       this.grid = 'main';
     },
 
-    // getColumns: function() {
-    //   return this.columns;
-    // },
-    //
-    // getGutterWidth: function() {
-    //   return this.gutterWidth;
-    // },
-    //
-    // getGrid: function() {
-    //   return this.grid;
-    // },
-    //
-    // setColumns: function(columns) {
-    //   this.columns = columns
-    // },
-    //
-    // setGutterWidth: function(gutterWidth) {
-    //   this.gutterWidth = gutterWidth;
-    // },
-    //
-    // setGrid: function(grid) {
-    //   this.grid = grid;
-    // },
-
     logValues: function() {
       console.log('columns', this.columns);
       console.log('gutterWidth', this.gutterWidth);

@@ -30,15 +30,8 @@
     },
 
     toggleLabelVisibility: function() {
-      // var labels = this.$.labels;
-      // for (var i = 0; i < this.labels.length; i++) {
-      //   console.log('label', this.labels[i]);
-      //   this.labels[i].hidden = true;
-      //   this.labels[i].name = 'spispopd';
-      //   this.set('labels.' + i + '.label.hidden', true);
-      //   this.fire('wednesday-cell-changed');
-      // }
-      this.$.list.style.textIndent = (this.$.list.style.textIndent !== '-9999px' ? '-9999px' : 0);
+      // this.$.list.style.textIndent = (this.$.list.style.textIndent !== '-9999px' ? '-9999px' : 0);
+      this.$.list.style.color = (this.$.list.style.color !== 'transparent' ? 'transparent' : '');
     }
 
   });

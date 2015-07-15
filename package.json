@@ -1,10 +1,10 @@
 {
   "private": true,
-  "name": "grid",
-  "description": "Example Grid",
+  "name": "grid-generator",
+  "description": "Grid Generator",
   "version": "0.1.0",
-  "domain": "staging.wednesdayagency.com",
-  "homepage": "http://staging.wednesdayagency.com/grid",
+  "domain": "tools.wednesdayagency.com",
+  "homepage": "http://tools.wednesdayagency.com/grid-generator",
   "author": {
     "name": "Wednesday",
     "email": "admin@wednesdayagency.com",
@@ -23,10 +23,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/wednesdayagency/grid"
+    "url": "https://github.com/wednesdayagency/grid-generator"
   },
   "bugs": {
-    "url": "https://github.com/wednesdayagency/grid/issues"
+    "url": "https://github.com/wednesdayagency/grid-generator/issues"
   },
   "license": "",
   "dependencies": {

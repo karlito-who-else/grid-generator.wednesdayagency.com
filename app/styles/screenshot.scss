@@ -11,19 +11,30 @@
 
 html,
 body,
-#container,
-#container div {
+#grid-container,
+#grid-container div {
   height: 100%;
 }
 
 body {
 
-  &.show-12-columns {
+  #grid-container {
+    padding-bottom: 15px;
+    padding-top: 15px;
+  }
 
-    .column-12 {
+  .main-grid,
+  .nested-grid {
+    padding-bottom: 15px;
+    padding-top: 15px;
+  }
+
+  &.show-main-columns {
+
+    .main-grid {
       outline: 1px solid rgba(0, 155, 155, 0.85);
 
-      > div {
+      > .background {
         background-color: rgba(0, 155, 155, 0.25);
 
         > div {
@@ -36,12 +47,12 @@ body {
 
   }
 
-  &.show-24-columns {
+  &.show-nested-columns {
 
-    .column-24 {
+    .nested-grid {
       outline: 1px solid rgba(0, 155, 155, 0.85);
 
-      > div {
+      > .background {
         background-color: rgba(0, 155, 155, 0.25);
       }
 

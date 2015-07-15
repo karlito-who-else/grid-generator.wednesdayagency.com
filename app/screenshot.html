@@ -8,8 +8,7 @@
   <meta name="generator" content="Grids" />
   <title>Grid - Responsive</title>
 
-  <!-- build:css styles/main.css -->
-  <!-- <link rel="stylesheet" href="styles/main.css"> -->
+  <!-- <link rel="stylesheet" href="styles/screenshot.css"> -->
   <link rel="stylesheet" href="styles/screenshot.css">
   <!-- endbuild-->
 
@@ -26,160 +25,30 @@
 
 <body>
 
-  <div id="container">
-    <div class="row">
-      <div class="col-xs-2 col-sm-1 column-12">
-        <div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-2 col-sm-1 column-12">
-        <div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-2 col-sm-1 column-12">
-        <div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-2 col-sm-1 column-12">
-        <div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-2 col-sm-1 column-12">
-        <div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-2 col-sm-1 column-12">
-        <div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hidden-xs col-xs-2 col-sm-1 column-12">
-        <div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hidden-xs col-xs-2 col-sm-1 column-12">
-        <div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hidden-xs col-xs-2 col-sm-1 column-12">
-        <div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hidden-xs col-xs-2 col-sm-1 column-12">
-        <div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hidden-xs col-xs-2 col-sm-1 column-12">
-        <div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hidden-xs col-xs-2 col-sm-1 column-12">
-        <div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-            <div class="col-xs-12 col-sm-6 column-24">
-              <div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <section class="container" id="grid-container">
+    <div class="row"></div>
     <dl>
       <dt>Width</dt>
       <dd id="label-width"></dd>
       <dt>Columns</dt>
       <dd id="label-columns"></dd>
     </dl>
-  </div>
+  </section>
+
+  <template id="column">
+    <div class="col-xs-2 col-sm-1 main-grid">
+      <div class="background">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 nested-grid">
+            <div class="background"></div>
+          </div>
+          <div class="col-xs-12 col-sm-6 nested-grid">
+            <div class="background"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
 
   <script src="/bower_components/html2canvas/build/html2canvas.js"></script>
 
