@@ -38,7 +38,7 @@
         document.querySelector('#grid-container .row').appendChild(fragment);
       }
     }
-  };
+  }
 
   let columns = getQueryParameter('columns');
   let containerType = getQueryParameter('container-type');
@@ -75,7 +75,7 @@
   setTimeout(html2canvas([document.body], {
     logging: true,
     onrendered: function(canvas) {
-      // window.location = canvas.toDataURL('image/png', 1.0);
+      window.location = canvas.toDataURL('image/png', 1.0);
     }
   }), 100);
 
