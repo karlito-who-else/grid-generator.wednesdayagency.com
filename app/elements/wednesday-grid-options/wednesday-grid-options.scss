@@ -28,26 +28,13 @@ header {
 }
 
 paper-input {
-    // max-width: 20rem;
-  // flex: 1;
 
   @media (max-width: $screen-xs-max) {
     --menu-container-display: none;
     flex: 100%;
-    // width: auto;
-
-    // &:not(:first-of-type) {
-    //   margin-left: 1rem;
-    // }
-    //
-    // &:not(:last-of-type) {
-    //   margin-right: 1rem;
-    // }
-
   }
 
   @media (min-width: $screen-sm-min) {
-    // width: 50%;
     flex: 1;
 
     &:not(:first-of-type) {

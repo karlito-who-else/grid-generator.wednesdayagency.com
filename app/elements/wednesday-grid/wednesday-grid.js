@@ -100,13 +100,13 @@
 
       // console.log('spinner', spinner);
 
-      let gridContainerRow = Polymer.dom(this.root).querySelector('#grid-container-row');
+      let gridContainerRow = Polymer.dom(this.root).querySelector('#grid .container .row');
       // console.log('gridContainerRow', gridContainerRow);
 
-      // const templateColumn = Polymer.dom(this.root).querySelector('template#column').content;
-      const templateColumn = document.querySelector('template#column').content;
+      // const wednesdayColumn = Polymer.dom(this.root).querySelector('template#column').content;
+      // const wednesdayColumn = document.querySelector('template#column').content;
 
-      console.log('templateColumn', templateColumn);
+      // console.log('wednesdayColumn', wednesdayColumn);
 
       // let columns = this.$.grid.querySelectorAll('.main-grid');
 
@@ -120,18 +120,14 @@
       gridContainerRow.innerHTML = '';
 
       for (let i = 0; i < this.columns; i++) { // hide all columns with an index greater than the amount we have specified
-        // columns[i].classList.remove('hidden');
+        let column = document.createElement('wednesday-column');
 
-        let clone = document.importNode(templateColumn, true);
-
-        console.log('clone', clone);
-
-        fragment.appendChild(clone);
-
+        fragment.appendChild(column);
         console.log('fragment', fragment);
 
+        console.log('this.columns', this.columns, 'i', i);
+
         if (i + 1 === this.columns) {
-          console.log('this.columns', this.columns);
           gridContainerRow.appendChild(fragment);
           console.log('gridContainerRow', gridContainerRow);
         }
@@ -256,7 +252,7 @@
       console.log('renderToImage');
       var _this = this;
       var breakpoints = document.querySelector('wednesday-breakpoints').breakpoints;
-      var classList = event.target.closest('wednesday-grid').querySelector('#grid-container').classList;
+      var classList = event.target.closest('wednesday-grid').querySelector('#grid .container').classList;
       var containerType = 'container';
 
       if (classList.contains('container')) {

@@ -6,6 +6,7 @@
   <link rel="import" href="/bower_components/paper-toolbar/paper-toolbar.html">
   <link rel="import" href="/bower_components/paper-spinner/paper-spinner.html">
   <link rel="import" href="../wednesday-cell/wednesday-cell.html">
+  <link rel="import" href="../wednesday-column/wednesday-column.html">
   <link rel="import" type="css" href="wednesday-grid.css">
   <template>
     <style id="dynamic">
@@ -53,7 +54,7 @@
       </section>
       <section id="grid" class="show-outline">
         <div class="container" id="grid-container">
-          <div class="row" id="grid-container-row">
+          <div class="row">
             <!--  empty #grid-container, populate amount of columns via template tag-->
             <!--  empty #example, populate amount of row and row widths via template tag-->
 <!--
@@ -352,21 +353,6 @@
       </section>
     </main>
     <code></code>
-  </template>
-
-  <template id="column">
-    <div class="col-xs-2 col-sm-1 main-grid">
-      <div>
-        <div class="row">
-          <div class="col-xs-12 col-sm-6 nested-grid">
-            <div></div>
-          </div>
-          <div class="col-xs-12 col-sm-6 nested-grid">
-            <div></div>
-          </div>
-        </div>
-      </div>
-    </div>
   </template>
 
   <script src="/bower_components/html2canvas/build/html2canvas.js"></script>
