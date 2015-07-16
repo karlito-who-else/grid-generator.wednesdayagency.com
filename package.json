@@ -3,8 +3,8 @@
   "name": "grid-generator",
   "description": "Grid Generator",
   "version": "0.1.0",
-  "domain": "tools.wednesdayagency.com",
-  "homepage": "http://tools.wednesdayagency.com/grid-generator",
+  "domain": "grid-generator.wednesdayagency.com",
+  "homepage": "http://grid-generator.wednesdayagency.com",
   "author": {
     "name": "Wednesday",
     "email": "admin@wednesdayagency.com",

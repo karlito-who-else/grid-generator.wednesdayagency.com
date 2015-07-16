@@ -1,4 +1,4 @@
-## Example Grid
+## Grid Generator
 
 
-This repository contains the source code for [Grid Generator](http://tools.wednesdayagency.com/grid-generator)
+This repository contains the source code for [Grid Generator](http://grid-generator.wednesdayagency.com)
