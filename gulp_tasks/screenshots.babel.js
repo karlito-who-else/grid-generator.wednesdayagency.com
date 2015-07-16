@@ -2,7 +2,7 @@
 
 import debug from 'gulp-debug';
 import gulp from 'gulp';
-import phantom from 'phantomjs2';
+// import phantom from 'phantomjs2';
 import util from 'gulp-util';
 import webshot from 'gulp-webshot';
 
@@ -16,7 +16,7 @@ gulp.task('screenshots', () => {
       title: 'screenshots:'
     }))
     .pipe(webshot({
-      phantomPath: phantom.path,
+    //   phantomPath: phantom.path,
       dest: config.path.destination.screenshots,
       root: config.path.source.base
     }))
