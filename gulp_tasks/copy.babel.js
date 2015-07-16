@@ -6,8 +6,8 @@ import util from 'gulp-util';
 
 import config from './_config.babel.js';
 
-const sourceFiles = config.files.miscellaneous;
-sourceFiles.concat(config.files.packages);
+let sourceFiles = config.files.miscellaneous;
+sourceFiles = sourceFiles.concat(config.files.packages);
 
 gulp.task('copy', () => {
   return gulp.src(sourceFiles, {
