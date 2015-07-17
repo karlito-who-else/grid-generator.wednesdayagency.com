@@ -3,7 +3,7 @@
 import debug from 'gulp-debug';
 import gulp from 'gulp';
 import symlink from 'gulp-sym';
-import util from 'gulp-util';
+import reportError from './_report-error.babel.js';
 
 import config from './_config.babel.js';
 
@@ -16,5 +16,5 @@ gulp.task('symlinks', () => {
       title: 'symlinks:'
     }))
     .pipe(symlink(config.path.destination.base + config.path.bowerComponents))
-    .on('error', util.log);
+    .on('error', reportError);
 });

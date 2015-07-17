@@ -3,7 +3,7 @@
 import debug from 'gulp-debug';
 import gulp from 'gulp';
 import jsdoc from 'gulp-jsdoc';
-import util from 'gulp-util';
+import reportError from './_report-error.babel.js';
 
 import manifest from '../package.json';
 
@@ -29,7 +29,7 @@ gulp.task('documentation', () => {
     .pipe(jsdoc.generator(config.path.destination.documentation, {
         path: 'ink-docstrap',
         systemName: manifest.name,
-        footer: 'For more information, see https://github.com/karlito-who-else/grid/wiki',
+        footer: 'For more information, see https://github.com/wednesdayagency/grid-generator/wiki',
         copyright: '&copy; copyright ' + new Date().getFullYear(),
         navType: 'vertical',
         theme: 'journal',
@@ -44,7 +44,7 @@ gulp.task('documentation', () => {
       })
     )
     // .pipe(gulp.dest(config.path.destination.documentation))
-    .on('error', util.log);
+    .on('error', reportError);
 });
 
 gulp.task('documentation:watch', function() {

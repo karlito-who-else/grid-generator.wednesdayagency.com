@@ -4,7 +4,7 @@ import concat from 'gulp-concat';
 import debug from 'gulp-debug';
 import gulp from 'gulp';
 // import order from 'gul`p-order';
-import util from 'gulp-util';
+import reportError from './_report-error.babel.js';
 
 import config from './_config.babel.js';
 
@@ -22,7 +22,7 @@ gulp.task('sass-for-browser', () => {
     // .pipe(order(sourceFiles))
     .pipe(concat('sass-for-browser.scss'))
     .pipe(gulp.dest(config.path.destination.sass))
-    .on('error', util.log);
+    .on('error', reportError);
 });
 
 gulp.task('sass-for-browser:watch', function() {
